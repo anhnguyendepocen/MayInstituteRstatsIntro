@@ -12,6 +12,7 @@ link-citations: yes
 
 - Download the data files here: https://lgatto.github.io/MayInstituteRstatsIntro/RIntro.zip
 - A pdf version of the course is available here: https://lgatto.github.io/MayInstituteRstatsIntro/RIntro.pdf
+- An pre-installed cloud-based RStudio session is available here: https://rstudio.cloud/project/332801
 
 ## Suggested reading {-}
 

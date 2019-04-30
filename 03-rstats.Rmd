@@ -899,10 +899,6 @@ for (i in 1:4) {
 
 See also another, more recent example:
 [The Datasaurus Dozen dataset](https://www.autodeskresearch.com/publications/samestats).
-<details>
-
-![The Datasaurus Dozen dataset](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
-</details>
 
 
 ### Correlation

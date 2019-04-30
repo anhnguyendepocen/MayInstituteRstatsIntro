@@ -10,7 +10,8 @@ link-citations: yes
 
 # Before we start {-}
 
-**TODO:** location to share data files.
+- Download the data files here: https://lgatto.github.io/MayInstituteRstatsIntro/RIntro.zip
+- A pdf version of the course is available here: https://lgatto.github.io/MayInstituteRstatsIntro/RIntro.pdf
 
 ## Suggested reading {-}
 

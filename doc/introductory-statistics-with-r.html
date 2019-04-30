@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 3 Introductory statistics with R | May Institute 2019: Beginner’s statistics in R</title>
+  <meta name="description" content="Chapter 3 Introductory statistics with R | May Institute 2019: Beginner’s statistics in R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 3 Introductory statistics with R | May Institute 2019: Beginner’s statistics in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Introductory statistics with R | May Institute 2019: Beginner’s statistics in R" />
+  
+  
+  
+
+<meta name="author" content="Laurent Gatto and Meena Choi">
+
+
+<meta name="date" content="2019-04-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-analysis-with-r.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Beginner's statistics in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Before we start</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#suggested-reading"><i class="fa fa-check"></i>Suggested reading</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#credit"><i class="fa fa-check"></i>Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> R and RStudio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#what-is-r-what-is-rstudio"><i class="fa fa-check"></i><b>1.1.1</b> What is R? What is RStudio?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#why-learn-r"><i class="fa fa-check"></i><b>1.1.2</b> Why learn R?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#knowing-your-way-around-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> Knowing your way around RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-set-up"><i class="fa fa-check"></i><b>1.1.4</b> Getting set up</a></li>
+<li class="chapter" data-level="1.1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.1.5</b> Organizing your working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#interacting-with-r"><i class="fa fa-check"></i><b>1.2</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#seeking-help"><i class="fa fa-check"></i><b>1.3</b> Seeking help</a><ul>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#use-the-built-in-rstudio-help-interface-to-search-for-more-information-on-r-functions"><i class="fa fa-check"></i>Use the built-in RStudio help interface to search for more information on R functions</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i>I know the name of the function I want to use, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one"><i class="fa fa-check"></i>I want to use a function that does X, there must be a function for it but I don’t know which one…</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i>I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#asking-for-help"><i class="fa fa-check"></i>Asking for help</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#where-to-ask-for-help"><i class="fa fa-check"></i>Where to ask for help?</a></li>
+<li class="chapter" data-level="1.3.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#more-resources"><i class="fa fa-check"></i><b>1.3.1</b> More resources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-packages"><i class="fa fa-check"></i><b>1.4</b> Installing packages</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#creating-objects-in-r"><i class="fa fa-check"></i><b>1.5.1</b> Creating objects in R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#comments"><i class="fa fa-check"></i><b>1.5.2</b> Comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>1.5.3</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="1.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#objects-vs.variables"><i class="fa fa-check"></i><b>1.5.4</b> Objects vs. variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#vectors-and-data-types"><i class="fa fa-check"></i><b>1.6</b> Vectors and data types</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#conditional-subsetting"><i class="fa fa-check"></i><b>1.6.1</b> Conditional subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#missing-data"><i class="fa fa-check"></i><b>1.7</b> Missing data</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>1.8</b> R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>2</b> Data analysis with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#reading-in-data"><i class="fa fa-check"></i><b>2.1.1</b> Reading in data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-frames"><i class="fa fa-check"></i><b>2.1.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>2.1.3</b> Inspecting <code>data.frame</code> objects</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>2.1.4</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#factors"><i class="fa fa-check"></i><b>2.1.5</b> Factors</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#other-data-structures"><i class="fa fa-check"></i><b>2.1.6</b> Other data structures</a></li>
+<li class="chapter" data-level="2.1.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-exploration"><i class="fa fa-check"></i><b>2.1.7</b> Data exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#manipulating-and-analyzing-data-with-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulating and analyzing data with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#what-are-dplyr-and-tidyr"><i class="fa fa-check"></i><b>2.2.1</b> What are <strong><code>dplyr</code></strong> and <strong><code>tidyr</code></strong>?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#selecting-columns-and-filtering-rows"><i class="fa fa-check"></i><b>2.2.2</b> Selecting columns and filtering rows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pipes"><i class="fa fa-check"></i><b>2.2.3</b> Pipes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#mutate"><i class="fa fa-check"></i><b>2.2.4</b> Mutate</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#split-apply-combine-data-analysis-and-the-summarize-function"><i class="fa fa-check"></i><b>2.2.5</b> Split-apply-combine data analysis and the summarize() function</a></li>
+<li class="chapter" data-level="2.2.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-and-exporting-data"><i class="fa fa-check"></i><b>2.2.6</b> Saving and exporting data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-visualisation"><i class="fa fa-check"></i><b>2.3</b> Data visualisation</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#histogram"><i class="fa fa-check"></i><b>2.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#boxplot-or-box-and-whisker-plot"><i class="fa fa-check"></i><b>2.3.2</b> Boxplot or box-and-whisker plot</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#the-ggplot2-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>ggplot2</code> package</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#customising-plots"><i class="fa fa-check"></i><b>2.3.4</b> Customising plots</a></li>
+<li class="chapter" data-level="2.3.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-your-figures"><i class="fa fa-check"></i><b>2.3.5</b> Saving your figures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-our-results"><i class="fa fa-check"></i><b>2.3.6</b> Saving our results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html"><i class="fa fa-check"></i><b>3</b> Introductory statistics with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#basic-statistics"><i class="fa fa-check"></i><b>3.1</b> Basic statistics</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#randomization"><i class="fa fa-check"></i><b>3.1.1</b> Randomization</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#basic-statistical-summaries"><i class="fa fa-check"></i><b>3.1.2</b> Basic statistical summaries</a></li>
+<li class="chapter" data-level="3.1.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#visualization-with-error-bars-for-descriptive-purpose"><i class="fa fa-check"></i><b>3.1.3</b> Visualization with error bars for descriptive purpose</a></li>
+<li class="chapter" data-level="3.1.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#working-with-statistical-distributions"><i class="fa fa-check"></i><b>3.1.4</b> Working with statistical distributions</a></li>
+<li class="chapter" data-level="3.1.5" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#calculate-the-confidence-interval"><i class="fa fa-check"></i><b>3.1.5</b> Calculate the confidence interval</a></li>
+<li class="chapter" data-level="3.1.6" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#saving-our-results-1"><i class="fa fa-check"></i><b>3.1.6</b> Saving our results</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#statistical-hypothesis-test"><i class="fa fa-check"></i><b>3.2</b> Statistical hypothesis test</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#two-sample-t-test-for-one-protein-with-one-feature"><i class="fa fa-check"></i><b>3.2.1</b> Two sample t-test for one protein with one feature</a></li>
+<li class="chapter" data-level="3.2.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#the-htest-class"><i class="fa fa-check"></i><b>3.2.2</b> The <code>htest</code> class</a></li>
+<li class="chapter" data-level="3.2.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#re-calculating-the-p-values"><i class="fa fa-check"></i><b>3.2.3</b> Re-calculating the p values</a></li>
+<li class="chapter" data-level="3.2.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#choosing-a-model"><i class="fa fa-check"></i><b>3.2.4</b> Choosing a model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#sample-size-calculation"><i class="fa fa-check"></i><b>3.3</b> Sample size calculation</a><ul>
+<li class="chapter" data-level="" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#r-code"><i class="fa fa-check"></i>R code</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#linear-models-and-correlation"><i class="fa fa-check"></i><b>3.4</b> Linear models and correlation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#correlation"><i class="fa fa-check"></i><b>3.4.1</b> Correlation</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#a-note-on-correlation-and-replication"><i class="fa fa-check"></i><b>3.4.2</b> A note on correlation and replication</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#linear-modelling"><i class="fa fa-check"></i><b>3.4.3</b> Linear modelling</a></li>
+<li class="chapter" data-level="" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#supplementary-information-working-with-statistical-distributions"><i class="fa fa-check"></i>Supplementary information: Working with statistical distributions</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">May Institute 2019: Beginner’s statistics in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introductory-statistics-with-r" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Introductory statistics with R</h1>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>Randomization and basic statistics</li>
+<li>Statistical hypothesis testing: t-test</li>
+<li>Sample size calculation</li>
+<li>Analysis for categorical data</li>
+<li>Linear regression and correlation</li>
+</ul>
+<div id="basic-statistics" class="section level2">
+<h2><span class="header-section-number">3.1</span> Basic statistics</h2>
+<div id="randomization" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Randomization</h3>
+<div id="random-selection-of-samples-from-a-larger-set" class="section level4">
+<h4><span class="header-section-number">3.1.1.1</span> Random selection of samples from a larger set</h4>
+<p>Let’s assume that we have the population with a total of 10 subjects. Suppose we label them from 1 to 10 and randomly would like to select 3 subjects we can do this using the <code>sample</code> function. When we run <code>sample</code> another time, different subjects will be selected. Try this a couple times.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 7 3 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 6 8 3</code></pre>
+<p>Now suppose we would like to select the same randomly selected samples every time, then we can use a random seed number.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">3728</span>)
+<span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1]  1  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">3728</span>)
+<span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1]  1  9 10</code></pre>
+<p>Let’s practice with fun example. Select two in our group member for coming early next Monday.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">group.member &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Cyril&#39;</span>, <span class="st">&#39;Dan&#39;</span>, <span class="st">&#39;Kylie&#39;</span>, <span class="st">&#39;Meena&#39;</span>, <span class="st">&#39;Sara&#39;</span>, <span class="st">&#39;Ting&#39;</span>, <span class="st">&#39;Tsung-Heng&#39;</span>, <span class="st">&#39;Tyler&#39;</span>)
+<span class="kw">sample</span>(group.member, <span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] &quot;Ting&quot; &quot;Sara&quot;</code></pre>
+</div>
+<div id="completely-randomized-order-of-ms-runs" class="section level4">
+<h4><span class="header-section-number">3.1.1.2</span> Completely randomized order of MS runs</h4>
+<p>Let’s load <code>iprg</code> data first.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&#39;./data/iprg.rda&#39;</span>)</code></pre></div>
+<p>We can also create a random order using all elements of iPRG dataset. Again, we can achieve this using <code>sample</code>, asking for exactly the amount of samples in the subset. This time, each repetition gives us a different order of the complete set.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">msrun &lt;-<span class="st"> </span><span class="kw">unique</span>(iprg<span class="op">$</span>Run)
+msrun</code></pre></div>
+<pre><code>##  [1] &quot;JD_06232014_sample1_B.raw&quot; &quot;JD_06232014_sample1_C.raw&quot;
+##  [3] &quot;JD_06232014_sample1-A.raw&quot; &quot;JD_06232014_sample2_A.raw&quot;
+##  [5] &quot;JD_06232014_sample2_B.raw&quot; &quot;JD_06232014_sample2_C.raw&quot;
+##  [7] &quot;JD_06232014_sample3_A.raw&quot; &quot;JD_06232014_sample3_B.raw&quot;
+##  [9] &quot;JD_06232014_sample3_C.raw&quot; &quot;JD_06232014_sample4_B.raw&quot;
+## [11] &quot;JD_06232014_sample4_C.raw&quot; &quot;JD_06232014_sample4-A.raw&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## randomize order among all 12 MS runs
+<span class="kw">sample</span>(msrun, <span class="kw">length</span>(msrun))</code></pre></div>
+<pre><code>##  [1] &quot;JD_06232014_sample4_C.raw&quot; &quot;JD_06232014_sample3_A.raw&quot;
+##  [3] &quot;JD_06232014_sample4-A.raw&quot; &quot;JD_06232014_sample4_B.raw&quot;
+##  [5] &quot;JD_06232014_sample2_C.raw&quot; &quot;JD_06232014_sample1_C.raw&quot;
+##  [7] &quot;JD_06232014_sample2_A.raw&quot; &quot;JD_06232014_sample3_C.raw&quot;
+##  [9] &quot;JD_06232014_sample3_B.raw&quot; &quot;JD_06232014_sample1-A.raw&quot;
+## [11] &quot;JD_06232014_sample1_B.raw&quot; &quot;JD_06232014_sample2_B.raw&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## different order will be shown.
+<span class="kw">sample</span>(msrun, <span class="kw">length</span>(msrun))</code></pre></div>
+<pre><code>##  [1] &quot;JD_06232014_sample1_B.raw&quot; &quot;JD_06232014_sample3_A.raw&quot;
+##  [3] &quot;JD_06232014_sample1-A.raw&quot; &quot;JD_06232014_sample2_A.raw&quot;
+##  [5] &quot;JD_06232014_sample3_B.raw&quot; &quot;JD_06232014_sample1_C.raw&quot;
+##  [7] &quot;JD_06232014_sample2_B.raw&quot; &quot;JD_06232014_sample3_C.raw&quot;
+##  [9] &quot;JD_06232014_sample4_C.raw&quot; &quot;JD_06232014_sample4-A.raw&quot;
+## [11] &quot;JD_06232014_sample2_C.raw&quot; &quot;JD_06232014_sample4_B.raw&quot;</code></pre>
+</div>
+<div id="randomized-block-design" class="section level4">
+<h4><span class="header-section-number">3.1.1.3</span> Randomized block design</h4>
+<ul>
+<li><p>Allow to remove known sources of variability that you are not interested in.</p></li>
+<li><p>Group conditions into blocks such that the conditions in a block are as similar as possible.</p></li>
+<li><p>Randomly assign samples with a block.</p></li>
+</ul>
+<p>This particular dataset contains a total of 12 MS runs across 4 conditions, 3 technical replicates per condition. Using the <code>block.random</code> function in the <code>psych</code> package, we can achieve randomized block designs! <code>block.random</code> function makes random assignment of <code>n</code> subjects with an equal number in all of <code>N</code> conditions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>) ## load the psych package
+
+msrun &lt;-<span class="st"> </span><span class="kw">unique</span>(iprg[, <span class="kw">c</span>(<span class="st">&#39;Condition&#39;</span>,<span class="st">&#39;Run&#39;</span>)])
+msrun</code></pre></div>
+<pre><code>## # A tibble: 12 x 2
+##    Condition  Run                      
+##    &lt;chr&gt;      &lt;chr&gt;                    
+##  1 Condition1 JD_06232014_sample1_B.raw
+##  2 Condition1 JD_06232014_sample1_C.raw
+##  3 Condition1 JD_06232014_sample1-A.raw
+##  4 Condition2 JD_06232014_sample2_A.raw
+##  5 Condition2 JD_06232014_sample2_B.raw
+##  6 Condition2 JD_06232014_sample2_C.raw
+##  7 Condition3 JD_06232014_sample3_A.raw
+##  8 Condition3 JD_06232014_sample3_B.raw
+##  9 Condition3 JD_06232014_sample3_C.raw
+## 10 Condition4 JD_06232014_sample4_B.raw
+## 11 Condition4 JD_06232014_sample4_C.raw
+## 12 Condition4 JD_06232014_sample4-A.raw</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 4 Conditions of 12 MS runs randomly ordered
+<span class="kw">block.random</span>(<span class="dt">n =</span> <span class="dv">12</span>, <span class="kw">c</span>(<span class="dt">Condition =</span> <span class="dv">4</span>))</code></pre></div>
+<pre><code>##     blocks Condition
+## S1       1         4
+## S2       1         1
+## S3       1         2
+## S4       1         3
+## S5       2         2
+## S6       2         4
+## S7       2         1
+## S8       2         3
+## S9       3         4
+## S10      3         1
+## S11      3         3
+## S12      3         2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">block.random</span>(<span class="dt">n =</span> <span class="dv">12</span>, <span class="kw">c</span>(<span class="dt">Condition =</span> <span class="dv">4</span>, <span class="dt">BioReplicate=</span><span class="dv">3</span>))</code></pre></div>
+<pre><code>##     blocks Condition BioReplicate
+## S1       1         3            3
+## S2       1         1            3
+## S3       1         1            2
+## S4       1         4            2
+## S5       1         1            1
+## S6       1         3            2
+## S7       1         2            2
+## S8       1         2            3
+## S9       1         4            3
+## S10      1         2            1
+## S11      1         3            1
+## S12      1         4            1</code></pre>
+</div>
+</div>
+<div id="basic-statistical-summaries" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Basic statistical summaries</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<div id="calculate-simple-statistics" class="section level4">
+<h4><span class="header-section-number">3.1.2.1</span> Calculate simple statistics</h4>
+<p>Let’s start data with one protein as an example and calculate the mean, standard deviation, standard error of the mean across all replicates per condition. We then store all the computed statistics into a single summary data frame for easy access.</p>
+<p>We can use the <code>aggregate</code> function to compute summary statistics. <code>aggregate</code> splits the data into subsets, computes summary statistics for each, and returns the result in a convenient form.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># check what proteins are in dataset, show all protein names</span>
+<span class="kw">head</span>(<span class="kw">unique</span>(iprg<span class="op">$</span>Protein))</code></pre></div>
+<pre><code>## [1] &quot;sp|D6VTK4|STE2_YEAST&quot;  &quot;sp|O13297|CET1_YEAST&quot;  &quot;sp|O13329|FOB1_YEAST&quot; 
+## [4] &quot;sp|O13539|THP2_YEAST&quot;  &quot;sp|O13547|CCW14_YEAST&quot; &quot;sp|O13563|RPN13_YEAST&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(iprg<span class="op">$</span>Protein))</code></pre></div>
+<pre><code>## [1] 3027</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#distinct(iprg, Protein)</span>
+<span class="kw">n_distinct</span>(iprg<span class="op">$</span>Protein)</code></pre></div>
+<pre><code>## [1] 3027</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let&#39;s start with one protein, named &quot;sp|P44015|VAC2_YEAST&quot;</span>
+oneproteindata &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Protein <span class="op">==</span><span class="st"> &quot;sp|P44015|VAC2_YEAST&quot;</span>, ]
+
+<span class="co"># there are 12 rows in oneproteindata</span>
+oneproteindata</code></pre></div>
+<pre><code>## # A tibble: 12 x 7
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|P44…          26.3 JD_0… Conditio…            1 82714388.
+##  2 sp|P44…          26.1 JD_0… Conditio…            1 72749239.
+##  3 sp|P44…          26.3 JD_0… Conditio…            1 82100518.
+##  4 sp|P44…          25.8 JD_0… Conditio…            2 59219741.
+##  5 sp|P44…          26.1 JD_0… Conditio…            2 72690802.
+##  6 sp|P44…          26.1 JD_0… Conditio…            2 71180513.
+##  7 sp|P44…          23.1 JD_0… Conditio…            3  9295260.
+##  8 sp|P44…          23.3 JD_0… Conditio…            3 10505591.
+##  9 sp|P44…          23.3 JD_0… Conditio…            3 10295788.
+## 10 sp|P44…          20.9 JD_0… Conditio…            4  2019205.
+## 11 sp|P44…          21.7 JD_0… Conditio…            4  3440629.
+## 12 sp|P44…          20.3 JD_0… Conditio…            4  1248781.
+## # … with 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with dplyr</span>
+oneproteindata.bcp &lt;-<span class="st"> </span><span class="kw">filter</span>(iprg, Protein <span class="op">==</span><span class="st"> &quot;sp|P44015|VAC2_YEAST&quot;</span>)
+oneproteindata.bcp</code></pre></div>
+<pre><code>## # A tibble: 12 x 7
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|P44…          26.3 JD_0… Conditio…            1 82714388.
+##  2 sp|P44…          26.1 JD_0… Conditio…            1 72749239.
+##  3 sp|P44…          26.3 JD_0… Conditio…            1 82100518.
+##  4 sp|P44…          25.8 JD_0… Conditio…            2 59219741.
+##  5 sp|P44…          26.1 JD_0… Conditio…            2 72690802.
+##  6 sp|P44…          26.1 JD_0… Conditio…            2 71180513.
+##  7 sp|P44…          23.1 JD_0… Conditio…            3  9295260.
+##  8 sp|P44…          23.3 JD_0… Conditio…            3 10505591.
+##  9 sp|P44…          23.3 JD_0… Conditio…            3 10295788.
+## 10 sp|P44…          20.9 JD_0… Conditio…            4  2019205.
+## 11 sp|P44…          21.7 JD_0… Conditio…            4  3440629.
+## 12 sp|P44…          20.3 JD_0… Conditio…            4  1248781.
+## # … with 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If you want to see more details,</span>
+?aggregate</code></pre></div>
+</div>
+<div id="calculate-mean-per-groups" class="section level4">
+<h4><span class="header-section-number">3.1.2.2</span> Calculate mean per groups</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## splits &#39;oneproteindata&#39; into subsets by &#39;Condition&#39;,
+## then, compute &#39;FUN=mean&#39; of &#39;log2Int&#39;
+sub.mean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Condition,
+                      <span class="dt">data =</span> oneproteindata,
+                      <span class="dt">FUN =</span> mean)
+sub.mean</code></pre></div>
+<pre><code>##    Condition Log2Intensity
+## 1 Condition1      26.23632
+## 2 Condition2      26.00661
+## 3 Condition3      23.25609
+## 4 Condition4      20.97056</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with dplyr</span>
+sub.mean.bcp &lt;-<span class="st"> </span>oneproteindata <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">mean=</span><span class="kw">mean</span>(Log2Intensity))
+
+sub.mean.bcp</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition   mean
+##   &lt;chr&gt;      &lt;dbl&gt;
+## 1 Condition1  26.2
+## 2 Condition2  26.0
+## 3 Condition3  23.3
+## 4 Condition4  21.0</code></pre>
+</div>
+<div id="calculate-sd-standard-deviation-per-groups" class="section level4">
+<h4><span class="header-section-number">3.1.2.3</span> Calculate SD (standard deviation) per groups</h4>
+<p><span class="math display">\[ s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar x)^2} \]</span></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Using the <code>aggregate</code> function above, calculate the standard deviation, by applying the <code>median</code> function.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The same as mean calculation above. &#39;FUN&#39; is changed to &#39;sd&#39;.
+sub.median &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Condition,
+                    <span class="dt">data =</span> oneproteindata, <span class="dt">FUN =</span> median)
+sub.median</code></pre></div>
+<pre><code>##    Condition Log2Intensity
+## 1 Condition1      26.29089
+## 2 Condition2      26.08498
+## 3 Condition3      23.29555
+## 4 Condition4      20.94536</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with dplyr</span>
+sub.median.bcp &lt;-<span class="st"> </span>oneproteindata <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">median=</span><span class="kw">median</span>(Log2Intensity))
+
+sub.median.bcp</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition  median
+##   &lt;chr&gt;       &lt;dbl&gt;
+## 1 Condition1   26.3
+## 2 Condition2   26.1
+## 3 Condition3   23.3
+## 4 Condition4   20.9</code></pre>
+<p></details></p>
+<blockquote>
+<p>Using the <code>aggregate</code> function above, calculate the standard deviation, by applying the <code>sd</code> function.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The same as mean calculation above. &#39;FUN&#39; is changed to &#39;sd&#39;.
+sub.sd &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Condition,
+                    <span class="dt">data =</span> oneproteindata, <span class="dt">FUN =</span> sd)
+sub.sd</code></pre></div>
+<pre><code>##    Condition Log2Intensity
+## 1 Condition1    0.10396539
+## 2 Condition2    0.16268179
+## 3 Condition3    0.09467798
+## 4 Condition4    0.73140174</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with dplyr</span>
+sub.sd.bcp &lt;-<span class="st"> </span>oneproteindata <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">sd =</span> <span class="kw">sd</span>(Log2Intensity))
+
+sub.sd.bcp</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition      sd
+##   &lt;chr&gt;       &lt;dbl&gt;
+## 1 Condition1 0.104 
+## 2 Condition2 0.163 
+## 3 Condition3 0.0947
+## 4 Condition4 0.731</code></pre>
+<p></details></p>
+</div>
+<div id="count-the-number-of-observation-per-groups" class="section level4">
+<h4><span class="header-section-number">3.1.2.4</span> Count the number of observation per groups</h4>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Using the <code>aggregate</code> function above, count the number of observations per group with the <code>length</code> function.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The same as mean calculation. &#39;FUN&#39; is changed &#39;length&#39;.
+sub.len &lt;-<span class="st"> </span><span class="kw">aggregate</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Condition,
+                     <span class="dt">data =</span> oneproteindata,
+                     <span class="dt">FUN =</span> length)
+sub.len</code></pre></div>
+<pre><code>##    Condition Log2Intensity
+## 1 Condition1             3
+## 2 Condition2             3
+## 3 Condition3             3
+## 4 Condition4             3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># with dplyr</span>
+sub.len.bcp &lt;-<span class="st"> </span>oneproteindata <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">count =</span> <span class="kw">n</span>())
+
+sub.len.bcp</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition  count
+##   &lt;chr&gt;      &lt;int&gt;
+## 1 Condition1     3
+## 2 Condition2     3
+## 3 Condition3     3
+## 4 Condition4     3</code></pre>
+<p></details></p>
+</div>
+<div id="calculate-se-standard-error-of-mean-per-groups" class="section level4">
+<h4><span class="header-section-number">3.1.2.5</span> Calculate SE (standard error of mean) per groups</h4>
+<p><span class="math display">\[ SE = \sqrt{\frac{s^2}{n}} \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sub.se &lt;-<span class="st"> </span><span class="kw">sqrt</span>(sub.sd<span class="op">$</span>Log2Intensity<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>sub.len<span class="op">$</span>Log2Intensity)
+sub.se</code></pre></div>
+<pre><code>## [1] 0.06002444 0.09392438 0.05466236 0.42227499</code></pre>
+<p>We can now make the summary table including the results above (mean, sd, se and length).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## paste0 : concatenate vectors after convering to character.
+(grp &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Condition&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>))</code></pre></div>
+<pre><code>## [1] &quot;Condition1&quot; &quot;Condition2&quot; &quot;Condition3&quot; &quot;Condition4&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## It is equivalent to paste(&quot;Condition&quot;, 1:4, sep=&quot;&quot;)
+summaryresult &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Group =</span> grp,
+                            <span class="dt">mean =</span> sub.mean<span class="op">$</span>Log2Intensity,
+                            <span class="dt">sd =</span> sub.sd<span class="op">$</span>Log2Intensity,
+                            <span class="dt">se =</span> sub.se,
+                            <span class="dt">length =</span> sub.len<span class="op">$</span>Log2Intensity)
+summaryresult</code></pre></div>
+<pre><code>##        Group     mean         sd         se length
+## 1 Condition1 26.23632 0.10396539 0.06002444      3
+## 2 Condition2 26.00661 0.16268179 0.09392438      3
+## 3 Condition3 23.25609 0.09467798 0.05466236      3
+## 4 Condition4 20.97056 0.73140174 0.42227499      3</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Make the same table as summaryresult with dplyr package.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult.dplyr &lt;-<span class="st"> </span>oneproteindata <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Log2Intensity),
+              <span class="dt">sd =</span> <span class="kw">sd</span>(Log2Intensity),
+              <span class="dt">length =</span> <span class="kw">n</span>())
+summaryresult.dplyr &lt;-<span class="st"> </span><span class="kw">mutate</span>(summaryresult.dplyr, <span class="dt">se=</span><span class="kw">sqrt</span>(sd<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>length))
+
+summaryresult.dplyr</code></pre></div>
+<pre><code>## # A tibble: 4 x 5
+##   Condition   mean     sd length     se
+##   &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;int&gt;  &lt;dbl&gt;
+## 1 Condition1  26.2 0.104       3 0.0600
+## 2 Condition2  26.0 0.163       3 0.0939
+## 3 Condition3  23.3 0.0947      3 0.0547
+## 4 Condition4  21.0 0.731       3 0.422</code></pre>
+<p></details></p>
+</div>
+</div>
+<div id="visualization-with-error-bars-for-descriptive-purpose" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Visualization with error bars for descriptive purpose</h3>
+<p><em>error bars</em> can have a variety of meanings or conclusions if what they represent is not precisely specified. Below we provide some examples of which types of error bars are common. We’re using the summary of protein <code>sp|P44015|VAC2_YEAST</code> from the previous section and the <code>ggplot2</code> package as it provides a convenient way to make easily adaptable plots.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># means without any errorbar</span>
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Group, <span class="dt">y =</span> mean, <span class="dt">colour =</span> Group),
+            <span class="dt">data =</span> summaryresult)<span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="dv">3</span>)
+p</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>Let’s change a number of visual properties to make the plot more attractive.</p>
+<ul>
+<li>Let’s change the labels of x-axis and y-axis and title: <code>labs(title=&quot;Mean&quot;, x=&quot;Condition&quot;, y='Log2(Intensity)')</code></li>
+<li>Let’s change background color for white: <code>theme_bw()</code></li>
+<li>Let’s change size or color of labels of axes and title, text of x-axis by using a <em>theme</em></li>
+<li>Let’s change the position of legend (use <code>'none'</code> to remove it)</li>
+<li>Let’s make the box for legend</li>
+<li>Let’s remove the box for legend key.</li>
+</ul>
+<p>See also this <a href="http://ggplot2.tidyverse.org/reference/theme.html">post</a> for options of <em>theme</em>, <a href="http://ggplot2.tidyverse.org/reference/ggtheme.html">post</a> for complete theme.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p2 &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Mean&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="dt">y =</span> <span class="st">&#39;Log2(Intensity)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">25</span>, <span class="dt">colour =</span> <span class="st">&quot;darkblue&quot;</span>),
+          <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>),
+          <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>),
+          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">13</span>),
+          <span class="dt">legend.position =</span> <span class="st">&#39;bottom&#39;</span>,
+          <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&#39;black&#39;</span>),
+          <span class="dt">legend.key =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&#39;white&#39;</span>))
+p2</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p>Let’s now add the <strong>standard deviation</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean with SD</span>
+p2 <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>sd, <span class="dt">ymin =</span> mean <span class="op">-</span><span class="st"> </span>sd), <span class="dt">width =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">      </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mean with SD&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Add the <strong>standard error of the mean</strong>. Which one is smaller?</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean with SE</span>
+p2 <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>se, <span class="dt">ymin=</span>mean <span class="op">-</span><span class="st"> </span>se), <span class="dt">width =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mean with SE&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The SE is narrow than the SD!</code></pre></div>
+<p></details></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Add the <strong>standard error of the mean</strong> with black color.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean with SE</span>
+p2 <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> mean <span class="op">+</span><span class="st"> </span>se, <span class="dt">ymin=</span>mean <span class="op">-</span><span class="st"> </span>se), <span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">color=</span><span class="st">&#39;black&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mean with SE&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-125-1.png" width="672" /> </details></p>
+</div>
+<div id="working-with-statistical-distributions" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Working with statistical distributions</h3>
+<p>For each statistical distribution, we have function to compute</p>
+<ul>
+<li>density</li>
+<li>distribution function</li>
+<li>quantile function</li>
+<li>random generation</li>
+</ul>
+<p>For the normale distribution <code>norm</code>, these are respectively</p>
+<ul>
+<li><code>dnorm</code></li>
+<li><code>pnorm</code></li>
+<li><code>qnorm</code></li>
+<li><code>rnorm</code></li>
+</ul>
+<p>Let’s start by sampling 1000000 values from a normal distribution <span class="math inline">\(N(0, 1)\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xn &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="fl">1e6</span>)
+<span class="kw">hist</span>(xn, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
+<span class="kw">rug</span>(xn)
+<span class="kw">lines</span>(<span class="kw">density</span>(xn), <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<p>By definition, the area under the density curve is 1. The area at the left of 0, 1, and 2 are respectively:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 0.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 0.8413447</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 0.9772499</code></pre>
+<p>To ask the inverse question, we use the quantile function. The obtain 0.5, 0.8413447 and 0.9772499 of our distribution, we need means of:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.5</span>)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="kw">pnorm</span>(<span class="dv">1</span>))</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="kw">pnorm</span>(<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.05</span>)</code></pre></div>
+<pre><code>## [1] -1.644854</code></pre>
+<p>Finally, the density function gives us the <em>height</em> at which we are for a given mean:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(xn, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(xn), <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="kw">points</span>(<span class="dv">0</span>, <span class="kw">dnorm</span>(<span class="dv">0</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">points</span>(<span class="dv">1</span>, <span class="kw">dnorm</span>(<span class="dv">1</span>), <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+<span class="kw">points</span>(<span class="dv">2</span>, <span class="kw">dnorm</span>(<span class="dv">2</span>), <span class="dt">pch =</span> <span class="dv">4</span>, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+</div>
+<div id="calculate-the-confidence-interval" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Calculate the confidence interval</h3>
+<p>Now that we’ve covered the standard error of the mean and the standard deviation, let’s investigate how we can add custom confidence intervals (CI) for our measurement of the mean. We’ll add these CI’s to the summary results we previously stored for protein <code>sp|P44015|VAC2_YEAST</code>.</p>
+<p>Confidence interval:</p>
+<p><span class="math display">\[\mbox{mean} \pm (SE \times \frac{\alpha}{2} ~ \mbox{quantile of t distribution})\]</span></p>
+<p>To calculate the 95% confident interval, we need to be careful and set the quantile for two-sided. We need to divide by two for error. For example, 95% confidence interval, right tail is 2.5% and left tail is 2.5%.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult<span class="op">$</span>ciw.lower<span class="fl">.95</span> &lt;-<span class="st"> </span>summaryresult<span class="op">$</span>mean <span class="op">-</span>
+<span class="st">    </span><span class="kw">qt</span>(<span class="fl">0.975</span>, summaryresult<span class="op">$</span>len <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>summaryresult<span class="op">$</span>se
+summaryresult<span class="op">$</span>ciw.upper<span class="fl">.95</span> &lt;-<span class="st"> </span>summaryresult<span class="op">$</span>mean <span class="op">+</span>
+<span class="st">    </span><span class="kw">qt</span>(<span class="fl">0.975</span>, summaryresult<span class="op">$</span>len <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>summaryresult<span class="op">$</span>se
+summaryresult</code></pre></div>
+<pre><code>##        Group     mean         sd         se length ciw.lower.95
+## 1 Condition1 26.23632 0.10396539 0.06002444      3     25.97805
+## 2 Condition2 26.00661 0.16268179 0.09392438      3     25.60248
+## 3 Condition3 23.25609 0.09467798 0.05466236      3     23.02090
+## 4 Condition4 20.97056 0.73140174 0.42227499      3     19.15366
+##   ciw.upper.95
+## 1     26.49458
+## 2     26.41073
+## 3     23.49128
+## 4     22.78746</code></pre>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult.dplyr <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">ciw.lower.95 =</span> mean <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, length<span class="dv">-1</span>)<span class="op">*</span>se,
+                               <span class="dt">ciw.upper.95 =</span> mean <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, length<span class="dv">-1</span>)<span class="op">*</span>se)</code></pre></div>
+<pre><code>## # A tibble: 4 x 7
+##   Condition   mean     sd length     se ciw.lower.95 ciw.upper.95
+##   &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;int&gt;  &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Condition1  26.2 0.104       3 0.0600         26.0         26.5
+## 2 Condition2  26.0 0.163       3 0.0939         25.6         26.4
+## 3 Condition3  23.3 0.0947      3 0.0547         23.0         23.5
+## 4 Condition4  21.0 0.731       3 0.422          19.2         22.8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult.dplyr</code></pre></div>
+<pre><code>## # A tibble: 4 x 5
+##   Condition   mean     sd length     se
+##   &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;int&gt;  &lt;dbl&gt;
+## 1 Condition1  26.2 0.104       3 0.0600
+## 2 Condition2  26.0 0.163       3 0.0939
+## 3 Condition3  23.3 0.0947      3 0.0547
+## 4 Condition4  21.0 0.731       3 0.422</code></pre>
+<p></details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean with 95% two-sided confidence interval</span>
+<span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Group, <span class="dt">y =</span> mean, <span class="dt">colour =</span> Group),
+       <span class="dt">data =</span> summaryresult) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> ciw.upper<span class="fl">.95</span>, <span class="dt">ymin =</span> ciw.lower<span class="fl">.95</span>), <span class="dt">width =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mean with 95% confidence interval&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Condition&quot;</span>, <span class="dt">y=</span><span class="st">&#39;Log2(Intensity)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">colour=</span><span class="st">&quot;darkblue&quot;</span>),
+          <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+          <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">13</span>),
+          <span class="dt">legend.position =</span> <span class="st">&#39;bottom&#39;</span>,
+          <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&#39;black&#39;</span>),
+          <span class="dt">legend.key =</span> <span class="kw">element_rect</span>(<span class="dt">colour=</span><span class="st">&#39;white&#39;</span>))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<blockquote>
+<p><strong>Challenges</strong></p>
+<p>Replicate the above for the 99% two-sided confidence interval.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># mean with 99% two-sided confidence interval</span>
+summaryresult<span class="op">$</span>ciw.lower<span class="fl">.99</span> &lt;-<span class="st"> </span>summaryresult<span class="op">$</span>mean <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.995</span>,summaryresult<span class="op">$</span>len<span class="dv">-1</span>) <span class="op">*</span><span class="st"> </span>summaryresult<span class="op">$</span>se
+summaryresult<span class="op">$</span>ciw.upper<span class="fl">.99</span> &lt;-<span class="st"> </span>summaryresult<span class="op">$</span>mean <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.995</span>,summaryresult<span class="op">$</span>len<span class="dv">-1</span>) <span class="op">*</span><span class="st"> </span>summaryresult<span class="op">$</span>se
+summaryresult</code></pre></div>
+<pre><code>##        Group     mean         sd         se length ciw.lower.95
+## 1 Condition1 26.23632 0.10396539 0.06002444      3     25.97805
+## 2 Condition2 26.00661 0.16268179 0.09392438      3     25.60248
+## 3 Condition3 23.25609 0.09467798 0.05466236      3     23.02090
+## 4 Condition4 20.97056 0.73140174 0.42227499      3     19.15366
+##   ciw.upper.95 ciw.lower.99 ciw.upper.99
+## 1     26.49458     25.64058     26.83205
+## 2     26.41073     25.07442     26.93879
+## 3     23.49128     22.71357     23.79860
+## 4     22.78746     16.77955     25.16157</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Group, <span class="dt">y =</span> mean, <span class="dt">colour =</span> Group),
+       <span class="dt">data =</span> summaryresult) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax =</span> ciw.upper<span class="fl">.99</span>, <span class="dt">ymin=</span>ciw.lower<span class="fl">.99</span>), <span class="dt">width=</span><span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Mean with 99% confidence interval&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Condition&quot;</span>, <span class="dt">y=</span><span class="st">&#39;Log2(Intensity)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">25</span>, <span class="dt">colour=</span><span class="st">&quot;darkblue&quot;</span>),
+          <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+          <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+          <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">13</span>),
+          <span class="dt">legend.position =</span> <span class="st">&#39;bottom&#39;</span>,
+          <span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">colour=</span><span class="st">&#39;black&#39;</span>),
+          <span class="dt">legend.key =</span> <span class="kw">element_rect</span>(<span class="dt">colour=</span><span class="st">&#39;white&#39;</span>))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-133-1.png" width="672" /> </details></p>
+<div id="some-comments" class="section level4 unnumbered">
+<h4>Some comments</h4>
+<ul>
+<li><p>Error bars with SD and CI are overlapping between groups!</p></li>
+<li><p>Error bars for the SD show the spread of the population while error bars based on SE reflect the uncertainty in the mean and depend on the sample size.</p></li>
+<li><p>Confidence intervals of <code>n</code> on the other hand mean that the intervals capture the population mean <code>n</code> percent of the time.</p></li>
+<li><p>When the sample size increases, CI and SE are getting closer to each other.</p></li>
+</ul>
+</div>
+</div>
+<div id="saving-our-results-1" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> Saving our results</h3>
+<p>We have two objects that contain all the information that we have generated so far:</p>
+<ul>
+<li>The <code>summaryresults</code> and <code>summaryresults.dplyr</code> objects, that contains all the summary statistics.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(summaryresult, <span class="dt">file =</span> <span class="st">&quot;./data/summaryresults.rda&quot;</span>)
+<span class="kw">save</span>(summaryresult.dplyr, <span class="dt">file =</span> <span class="st">&quot;./data/summaryresults.dplyr.rda&quot;</span>)</code></pre></div>
+<p>We can also save the summary result as a <code>csv</code> file using the <code>write.csv</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(sumamryresult, <span class="dt">file =</span> <span class="st">&quot;./data/summary.csv&quot;</span>)</code></pre></div>
+<p><strong>Tip</strong>: Exporting to csv is useful to share your work with collaborators that do not use R, but for many continous work in R, to assure data validity accords platforms, the best format is <code>rda</code>.</p>
+</div>
+</div>
+<div id="statistical-hypothesis-test" class="section level2">
+<h2><span class="header-section-number">3.2</span> Statistical hypothesis test</h2>
+<p>First, we are going to prepare the session for further analyses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./data/summaryresults.rda&quot;</span>)
+<span class="kw">load</span>(<span class="st">&quot;./data/iprg.rda&quot;</span>)</code></pre></div>
+<div id="two-sample-t-test-for-one-protein-with-one-feature" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Two sample t-test for one protein with one feature</h3>
+<p>Now, we’ll perform a t-test whether protein <code>sp|P44015|VAC2_YEAST</code> has a change in abundance between Condition 1 and Condition 2.</p>
+<div id="hypothesis" class="section level4 unnumbered">
+<h4>Hypothesis</h4>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: no change in abundance, mean(Condition1) - mean(Condition2) = 0</li>
+<li><span class="math inline">\(H_a\)</span>: change in abundance, mean(Condition1) - mean(Condition 2) <span class="math inline">\(\neq\)</span> 0</li>
+</ul>
+</div>
+<div id="statistics" class="section level4 unnumbered">
+<h4>Statistics</h4>
+<ul>
+<li>Observed <span class="math inline">\(t = \frac{\mbox{difference of group means}}{\mbox{estimate of variation}} = \frac{(mean_{1} - mean_{2})}{SE} \sim t_{\alpha/2, df}\)</span></li>
+<li>Standard error, <span class="math inline">\(SE=\sqrt{\frac{s_{1}^2}{n_{1}} + \frac{s_{2}^2}{n_{2}}}\)</span></li>
+</ul>
+<p>with</p>
+<ul>
+<li><span class="math inline">\(n_{i}\)</span>: number of replicates</li>
+<li><span class="math inline">\(s_{i}^2 = \frac{1}{n_{i}-1} \sum (Y_{ij} - \bar{Y_{i \cdot}})^2\)</span>: sample variance</li>
+</ul>
+</div>
+<div id="data-preparation" class="section level4 unnumbered">
+<h4>Data preparation</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Let&#39;s start with one protein, named &quot;sp|P44015|VAC2_YEAST&quot;
+oneproteindata &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Protein <span class="op">==</span><span class="st"> &quot;sp|P44015|VAC2_YEAST&quot;</span>, ]
+
+## Then, get two conditions only, because t.test only works for two groups (conditions).
+oneproteindata.condition12 &lt;-<span class="st"> </span>oneproteindata[oneproteindata<span class="op">$</span>Condition <span class="op">%in%</span>
+<span class="st">                                             </span><span class="kw">c</span>(<span class="st">&#39;Condition1&#39;</span>, <span class="st">&#39;Condition2&#39;</span>), ]
+oneproteindata.condition12</code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   Protein Log2Intensity Run   Condition BioReplicate Intensity
+##   &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+## 1 sp|P44…          26.3 JD_0… Conditio…            1 82714388.
+## 2 sp|P44…          26.1 JD_0… Conditio…            1 72749239.
+## 3 sp|P44…          26.3 JD_0… Conditio…            1 82100518.
+## 4 sp|P44…          25.8 JD_0… Conditio…            2 59219741.
+## 5 sp|P44…          26.1 JD_0… Conditio…            2 72690802.
+## 6 sp|P44…          26.1 JD_0… Conditio…            2 71180513.
+## # … with 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(oneproteindata.condition12[, <span class="kw">c</span>(<span class="st">&quot;Condition&quot;</span>, <span class="st">&quot;BioReplicate&quot;</span>)])</code></pre></div>
+<pre><code>##             BioReplicate
+## Condition    1 2
+##   Condition1 3 0
+##   Condition2 0 3</code></pre>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## with dplyr
+## Let&#39;s start with one protein, named &quot;sp|P44015|VAC2_YEAST&quot;
+oneproteindata &lt;-<span class="st"> </span><span class="kw">filter</span>(iprg, Protein <span class="op">==</span><span class="st"> &quot;sp|P44015|VAC2_YEAST&quot;</span>)
+
+## Then, get two conditions only, because t.test only works for two groups (conditions).
+oneproteindata.subset &lt;-<span class="st"> </span><span class="kw">filter</span>(oneproteindata,
+                                Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Condition1&#39;</span>, <span class="st">&#39;Condition2&#39;</span>))
+oneproteindata.subset</code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   Protein Log2Intensity Run   Condition BioReplicate Intensity
+##   &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+## 1 sp|P44…          26.3 JD_0… Conditio…            1 82714388.
+## 2 sp|P44…          26.1 JD_0… Conditio…            1 72749239.
+## 3 sp|P44…          26.3 JD_0… Conditio…            1 82100518.
+## 4 sp|P44…          25.8 JD_0… Conditio…            2 59219741.
+## 5 sp|P44…          26.1 JD_0… Conditio…            2 72690802.
+## 6 sp|P44…          26.1 JD_0… Conditio…            2 71180513.
+## # … with 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(oneproteindata.subset[, <span class="kw">c</span>(<span class="st">&quot;Condition&quot;</span>, <span class="st">&quot;BioReplicate&quot;</span>)])</code></pre></div>
+<pre><code>##             BioReplicate
+## Condition    1 2
+##   Condition1 3 0
+##   Condition2 0 3</code></pre>
+<p></details></p>
+<p>If we want to remove the levels that are not relevant anymore, we can use <code>droplevels</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oneproteindata.subset &lt;-<span class="st"> </span><span class="kw">droplevels</span>(oneproteindata.subset)
+<span class="kw">table</span>(oneproteindata.subset[, <span class="kw">c</span>(<span class="st">&quot;Condition&quot;</span>, <span class="st">&quot;BioReplicate&quot;</span>)])</code></pre></div>
+<pre><code>##             BioReplicate
+## Condition    1 2
+##   Condition1 3 0
+##   Condition2 0 3</code></pre>
+<p>To perform the t-test, we use the <code>t.test</code> function. Let’s first familiarise ourselves with it by looking that the manual</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?t.test</code></pre></div>
+<p>And now apply to to our data</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># t test for different abundance (log2Int) between Groups (Condition)</span>
+result &lt;-<span class="st"> </span><span class="kw">t.test</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Condition,
+                 <span class="dt">data =</span> oneproteindata.subset,
+                 <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)
+
+result</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Log2Intensity by Condition
+## t = 2.0608, df = 3.4001, p-value = 0.1206
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.1025408  0.5619598
+## sample estimates:
+## mean in group Condition1 mean in group Condition2 
+##                 26.23632                 26.00661</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Repeat the t-test above but with calculating a 90% confidence interval for the log2 fold change.</p>
+</blockquote>
+<p><details></p>
+<p></details></p>
+</div>
+</div>
+<div id="the-htest-class" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> The <code>htest</code> class</h3>
+<p>The <code>t.test</code> function, like other hypothesis testing function, return a result of a type we haven’t encountered yet, the <code>htest</code> class:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(result)</code></pre></div>
+<pre><code>## [1] &quot;htest&quot;</code></pre>
+<p>which stores typical results from such tests. Let’s have a more detailed look at what information we can learn from the results our t-test. When we type the name of our <code>result</code> object, we get a short textual summary, but the object contains more details:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(result)</code></pre></div>
+<pre><code>##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+##  [6] &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
+<p>and we can access each of these by using the <code>$</code> operator, like we used to access a single column from a <code>data.frame</code>, but the <code>htest</code> class is not a <code>data.frame</code> (it’s actually a <code>list</code>). For example, to access the group means, we would use</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result<span class="op">$</span>estimate</code></pre></div>
+<pre><code>## mean in group Condition1 mean in group Condition2 
+##                 26.23632                 26.00661</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ul>
+<li>Calculate the (log2-transformed) fold change between groups</li>
+<li>Extract the value of the t-statistics</li>
+<li>Calculate the standard error (fold-change/t-statistics)</li>
+<li>Extract the degrees of freedom (parameter)</li>
+<li>Extract the p values</li>
+<li>Extract the 95% confidence intervals</li>
+</ul>
+</blockquote>
+<p><details></p>
+<p></details></p>
+<p>We can also manually compute our t-test statistic using the formulas we descibed above and compare it with the <code>summaryresult</code>.</p>
+<p>Recall the <code>summaryresult</code> we generated last section.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult</code></pre></div>
+<pre><code>##        Group     mean         sd         se length ciw.lower.95
+## 1 Condition1 26.23632 0.10396539 0.06002444      3     25.97805
+## 2 Condition2 26.00661 0.16268179 0.09392438      3     25.60248
+## 3 Condition3 23.25609 0.09467798 0.05466236      3     23.02090
+## 4 Condition4 20.97056 0.73140174 0.42227499      3     19.15366
+##   ciw.upper.95 ciw.lower.99 ciw.upper.99
+## 1     26.49458     25.64058     26.83205
+## 2     26.41073     25.07442     26.93879
+## 3     23.49128     22.71357     23.79860
+## 4     22.78746     16.77955     25.16157</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">summaryresult12 &lt;-<span class="st"> </span>summaryresult[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]
+
+## test statistic, It is the same as &#39;result$statistic&#39; above.
+<span class="kw">diff</span>(summaryresult12<span class="op">$</span>mean) ## different sign, but absolute values are same as result$estimate[1]-result$estimate[2]</code></pre></div>
+<pre><code>## [1] -0.2297095</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="kw">sum</span>(summaryresult12<span class="op">$</span>sd<span class="op">^</span><span class="dv">2</span><span class="op">/</span>summaryresult12<span class="op">$</span>length)) ## same as stand error</code></pre></div>
+<pre><code>## [1] 0.1114662</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## the t-statistic : sign is different
+<span class="kw">diff</span>(summaryresult12<span class="op">$</span>mean)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">sum</span>(summaryresult12<span class="op">$</span>sd<span class="op">^</span><span class="dv">2</span><span class="op">/</span>summaryresult12<span class="op">$</span>length))</code></pre></div>
+<pre><code>## [1] -2.060799</code></pre>
+</div>
+<div id="re-calculating-the-p-values" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Re-calculating the p values</h3>
+<p>Referring back to our t-test results above, we can manually calculate the one- and two-side tests p-values using the t-statistics and the test parameter (using the <code>pt</code> function).</p>
+<p>Our result t statistic was 2.0607988 (accessible with <code>result$statistic</code>). Let’s start by visualising it along a t distribution. Let’s create data from such a distribution, making sure we set to appropriate parameter.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## generate 10^5 number with the same degree of freedom for distribution.
+xt &lt;-<span class="st"> </span><span class="kw">rt</span>(<span class="fl">1e5</span>, result<span class="op">$</span>parameter)
+<span class="kw">plot</span>(<span class="kw">density</span>(xt), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>))
+<span class="kw">abline</span>(<span class="dt">v =</span> result<span class="op">$</span>statistic, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) ## where t statistics are located.
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) ## horizontal line at 0</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<p><strong>The area on the left</strong> of that point is given by <code>pt(result$statistic, result$parameter)</code>, which is 0.939693. The p-value for a one-sided test, which is ** the area on the right** of red line, is this given by</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(result<span class="op">$</span>statistic, result<span class="op">$</span>parameter)</code></pre></div>
+<pre><code>##          t 
+## 0.06030697</code></pre>
+<p>And the p-value for a two-sided test is</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(result<span class="op">$</span>statistic, result<span class="op">$</span>parameter))</code></pre></div>
+<pre><code>##         t 
+## 0.1206139</code></pre>
+<p>which is the same as the one calculated by the t-test.</p>
+</div>
+<div id="choosing-a-model" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Choosing a model</h3>
+<p>The decision of which statistical model is appropriate for a given set of observations depends on the type of data that have been collected.</p>
+<ul>
+<li><p>Quantitative response with quantitative predictors : regression model</p></li>
+<li><p>Categorical response with quantitative predictors : logistic regression model for bivariate categorical response (e.g., Yes/No, dead/alive), multivariate logistic regression model when the response variable has more than two possible values.</p></li>
+<li><p>Quantitative response with categorical predictors : ANOVA model (quantitative response across several populations defined by one or more categorical predictor variables)</p></li>
+<li><p>Categorical response with categorical predictors : contingency table that can be used to draw conclusions about the relationships between variables.</p></li>
+</ul>
+<p>See also <em>Bremer &amp; Doerge</em>, <a href="https://www.amazon.com/dp/1621821129/ref=olp_product_details?_encoding=UTF8&amp;me=">Using R at the Bench : Step-by-Step Data Analytics for Biologists</a>, cold Spring Harbor LaboratoryPress, 2015.</p>
+</div>
+</div>
+<div id="sample-size-calculation" class="section level2">
+<h2><span class="header-section-number">3.3</span> Sample size calculation</h2>
+<p>To calculate the required sample size, you’ll need to know four things:</p>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>: confidence level</li>
+<li><span class="math inline">\(power\)</span>: 1 - <span class="math inline">\(\beta\)</span>, where <span class="math inline">\(\beta\)</span> is probability of a true positive discovery</li>
+<li><span class="math inline">\(\Delta\)</span>: anticipated fold change</li>
+<li><span class="math inline">\(\sigma\)</span>: anticipated variance</li>
+</ul>
+<div id="r-code" class="section level3 unnumbered">
+<h3>R code</h3>
+<p>Assuming equal varaince and number of samples across groups, the following formula is used for sample size estimation:</p>
+<p><span class="math display">\[\frac{2{\sigma}^2}{n}\leq(\frac{\Delta}{z_{1-\beta}+z_{1-\alpha/2}})^2\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;pwr&quot;</span>)
+
+## ?pwr.t.test
+
+<span class="co"># Significance level alpha</span>
+alpha &lt;-<span class="st"> </span><span class="fl">0.05</span>
+
+<span class="co"># Power = 1 - beta</span>
+power &lt;-<span class="st"> </span><span class="fl">0.95</span>
+
+<span class="co"># anticipated log2 fold change</span>
+delta &lt;-<span class="st"> </span><span class="dv">1</span>
+
+<span class="co"># anticipated variability</span>
+sigma &lt;-<span class="st"> </span><span class="fl">0.9</span>
+
+<span class="co"># Effect size</span>
+<span class="co"># It quantifies the size of the difference between two groups</span>
+d &lt;-<span class="st"> </span>delta<span class="op">/</span>sigma
+
+<span class="co">#Sample size estimation</span>
+<span class="kw">pwr.t.test</span>(<span class="dt">d =</span> d, <span class="dt">sig.level =</span> alpha, <span class="dt">power =</span> power, <span class="dt">type =</span> <span class="st">&#39;two.sample&#39;</span>)</code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 22.06036
+##               d = 1.111111
+##       sig.level = 0.05
+##           power = 0.95
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ul>
+<li>Calculate power with 10 samples and the same parameters as above.</li>
+</ul>
+</blockquote>
+<p><details></p>
+<p></details></p>
+<p>Let’s investigate the effect of required fold change and variance on the sample size estimation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># anticipated log2 fold change</span>
+delta &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.7</span>, <span class="fl">.1</span>)
+nd &lt;-<span class="st"> </span><span class="kw">length</span>(delta)
+
+<span class="co"># anticipated variability</span>
+sigma &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.5</span>,.<span class="dv">1</span>)
+ns &lt;-<span class="st"> </span><span class="kw">length</span>(sigma)
+
+<span class="co"># obtain sample sizes</span>
+samsize &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dt">nrow=</span>ns<span class="op">*</span>nd, <span class="dt">ncol =</span> <span class="dv">3</span>)
+counter &lt;-<span class="st"> </span><span class="dv">0</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nd){
+  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ns){
+    result &lt;-<span class="st"> </span><span class="kw">pwr.t.test</span>(<span class="dt">d =</span> delta[i] <span class="op">/</span><span class="st"> </span>sigma[j],
+                         <span class="dt">sig.level =</span> alpha,
+                         <span class="dt">power =</span> power,
+                         <span class="dt">type =</span> <span class="st">&quot;two.sample&quot;</span>)
+    counter &lt;-<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+    samsize[counter, <span class="dv">1</span>] &lt;-<span class="st"> </span>delta[i]
+    samsize[counter, <span class="dv">2</span>] &lt;-<span class="st"> </span>sigma[j]
+    samsize[counter, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">ceiling</span>(result<span class="op">$</span>n)
+  }
+}
+<span class="kw">colnames</span>(samsize) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;desiredlog2FC&quot;</span>, <span class="st">&quot;variability&quot;</span>, <span class="st">&quot;samplesize&quot;</span>)
+
+## visualization
+samsize &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(samsize)
+samsize<span class="op">$</span>variability &lt;-<span class="st"> </span><span class="kw">as.factor</span>(samsize<span class="op">$</span>variability)
+<span class="kw">ggplot</span>(<span class="dt">data=</span>samsize, <span class="kw">aes</span>(<span class="dt">x=</span>desiredlog2FC, <span class="dt">y=</span>samplesize, <span class="dt">group =</span> variability, <span class="dt">colour =</span> variability)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">2</span>, <span class="dt">shape=</span><span class="dv">21</span>, <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Significance level=0.05, Power=0.95&quot;</span>, <span class="dt">x=</span><span class="st">&quot;Anticipated log2 fold change&quot;</span>, <span class="dt">y=</span><span class="st">&#39;Sample Size (n)&#39;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">20</span>, <span class="dt">colour=</span><span class="st">&quot;darkblue&quot;</span>),
+        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>),
+        <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">13</span>))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+</div>
+</div>
+<div id="linear-models-and-correlation" class="section level2">
+<h2><span class="header-section-number">3.4</span> Linear models and correlation</h2>
+<p>When considering correlations and modelling data, visualization is key.</p>
+<p>Let’s use the famous <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet"><em>Anscombe’s quartet</em></a> data as a motivating example. This data is composed of 4 pairs of values, <span class="math inline">\((x_1, y_1)\)</span> to <span class="math inline">\((x_4, y_4)\)</span>:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+<th align="right">x4</th>
+<th align="right">y1</th>
+<th align="right">y2</th>
+<th align="right">y3</th>
+<th align="right">y4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">8</td>
+<td align="right">8.04</td>
+<td align="right">9.14</td>
+<td align="right">7.46</td>
+<td align="right">6.58</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">6.95</td>
+<td align="right">8.14</td>
+<td align="right">6.77</td>
+<td align="right">5.76</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">8</td>
+<td align="right">7.58</td>
+<td align="right">8.74</td>
+<td align="right">12.74</td>
+<td align="right">7.71</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">8.81</td>
+<td align="right">8.77</td>
+<td align="right">7.11</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">8.33</td>
+<td align="right">9.26</td>
+<td align="right">7.81</td>
+<td align="right">8.47</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">8</td>
+<td align="right">9.96</td>
+<td align="right">8.10</td>
+<td align="right">8.84</td>
+<td align="right">7.04</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">7.24</td>
+<td align="right">6.13</td>
+<td align="right">6.08</td>
+<td align="right">5.25</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">19</td>
+<td align="right">4.26</td>
+<td align="right">3.10</td>
+<td align="right">5.39</td>
+<td align="right">12.50</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">8</td>
+<td align="right">10.84</td>
+<td align="right">9.13</td>
+<td align="right">8.15</td>
+<td align="right">5.56</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">8</td>
+<td align="right">4.82</td>
+<td align="right">7.26</td>
+<td align="right">6.42</td>
+<td align="right">7.91</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">8</td>
+<td align="right">5.68</td>
+<td align="right">4.74</td>
+<td align="right">5.73</td>
+<td align="right">6.89</td>
+</tr>
+</tbody>
+</table>
+<p>Each of these <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> sets have the same variance, mean and correlation:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">1</th>
+<th align="right">2</th>
+<th align="right">3</th>
+<th align="right">4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>var(x)</td>
+<td align="right">11.0000000</td>
+<td align="right">11.0000000</td>
+<td align="right">11.0000000</td>
+<td align="right">11.0000000</td>
+</tr>
+<tr class="even">
+<td>mean(x)</td>
+<td align="right">9.0000000</td>
+<td align="right">9.0000000</td>
+<td align="right">9.0000000</td>
+<td align="right">9.0000000</td>
+</tr>
+<tr class="odd">
+<td>var(y)</td>
+<td align="right">4.1272691</td>
+<td align="right">4.1276291</td>
+<td align="right">4.1226200</td>
+<td align="right">4.1232491</td>
+</tr>
+<tr class="even">
+<td>mean(y)</td>
+<td align="right">7.5009091</td>
+<td align="right">7.5009091</td>
+<td align="right">7.5000000</td>
+<td align="right">7.5009091</td>
+</tr>
+<tr class="odd">
+<td>cor(x,y)</td>
+<td align="right">0.8164205</td>
+<td align="right">0.8162365</td>
+<td align="right">0.8162867</td>
+<td align="right">0.8165214</td>
+</tr>
+</tbody>
+</table>
+<p>But…</p>
+<p>While the <em>residuals</em> of the linear regression clearly indicate fundamental differences in these data, the most simple and straightforward approach is <em>visualisation</em> to highlight the fundamental differences in the datasets.</p>
+<p><img src="RIntro_files/figure-html/anscombefig-1.png" width="672" /></p>
+<p>See also another, more recent example: <a href="https://www.autodeskresearch.com/publications/samestats">The Datasaurus Dozen dataset</a>. <details></p>
+<p><img src="https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif" alt="The Datasaurus Dozen dataset" /> </details></p>
+<div id="correlation" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Correlation</h3>
+<p>Here is an example where a wide format comes very handy. We are going to convert our iPRG data using the <code>spread</code> function from the <code>tidyr</code> package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyr&quot;</span>)
+iprg2 &lt;-<span class="st"> </span><span class="kw">spread</span>(iprg[, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], Run, Log2Intensity)
+<span class="kw">rownames</span>(iprg2) &lt;-<span class="st"> </span>iprg2<span class="op">$</span>Protein</code></pre></div>
+<pre><code>## Warning: Setting row names on a tibble is deprecated.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg2 &lt;-<span class="st"> </span>iprg2[, <span class="dv">-1</span>]</code></pre></div>
+<p>And lets focus on the 3 runs, i.e. 2 replicates from condition 1 and 1 replicate from condition 4.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span>iprg2[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">10</span>)]
+<span class="kw">head</span>(x)</code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   JD_06232014_sample1_B.r… JD_06232014_sample1_C.r… JD_06232014_sample4_B.…
+##                      &lt;dbl&gt;                    &lt;dbl&gt;                   &lt;dbl&gt;
+## 1                     26.8                     26.6                    26.6
+## 2                     24.7                     24.7                    24.6
+## 3                     23.4                     24.0                    23.2
+## 4                     27.5                     27.4                    26.7
+## 5                     27.2                     26.8                    27.0
+## 6                     26.1                     26.3                    26.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(x)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p>We can use the <code>cor</code> function to calculate the Pearson correlation between two vectors of the same length (making sure the order is correct), or a dataframe. But, we have missing values in the data, which will stop us from calculating the correlation:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(x)</code></pre></div>
+<pre><code>##                           JD_06232014_sample1_B.raw
+## JD_06232014_sample1_B.raw                         1
+## JD_06232014_sample1_C.raw                        NA
+## JD_06232014_sample4_B.raw                        NA
+##                           JD_06232014_sample1_C.raw
+## JD_06232014_sample1_B.raw                        NA
+## JD_06232014_sample1_C.raw                         1
+## JD_06232014_sample4_B.raw                        NA
+##                           JD_06232014_sample4_B.raw
+## JD_06232014_sample1_B.raw                        NA
+## JD_06232014_sample1_C.raw                        NA
+## JD_06232014_sample4_B.raw                         1</code></pre>
+<p>We first need to omit the proteins/rows that contain missing values</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(x)
+<span class="kw">cor</span>(x2)</code></pre></div>
+<pre><code>##                           JD_06232014_sample1_B.raw
+## JD_06232014_sample1_B.raw                 1.0000000
+## JD_06232014_sample1_C.raw                 0.9722642
+## JD_06232014_sample4_B.raw                 0.9702758
+##                           JD_06232014_sample1_C.raw
+## JD_06232014_sample1_B.raw                 0.9722642
+## JD_06232014_sample1_C.raw                 1.0000000
+## JD_06232014_sample4_B.raw                 0.9585676
+##                           JD_06232014_sample4_B.raw
+## JD_06232014_sample1_B.raw                 0.9702758
+## JD_06232014_sample1_C.raw                 0.9585676
+## JD_06232014_sample4_B.raw                 1.0000000</code></pre>
+</div>
+<div id="a-note-on-correlation-and-replication" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> A note on correlation and replication</h3>
+<p>It is often assumed that high correlation is a halmark of good replication. Rather than focus on the correlation of the data, a better measurement would be to look a the log2 fold-changes, i.e. the distance between or repeated measurements. The ideal way to visualise this is on an MA-plot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+r1 &lt;-<span class="st"> </span>x2[[<span class="dv">1</span>]]
+r2 &lt;-<span class="st"> </span>x2[[<span class="dv">2</span>]]
+M &lt;-<span class="st"> </span>r1 <span class="op">-</span><span class="st"> </span>r2
+A &lt;-<span class="st"> </span>(r1 <span class="op">+</span><span class="st"> </span>r2)<span class="op">/</span><span class="dv">2</span>
+<span class="kw">plot</span>(A, M); <span class="kw">grid</span>()
+<span class="kw">suppressPackageStartupMessages</span>(<span class="kw">library</span>(<span class="st">&quot;affy&quot;</span>))
+affy<span class="op">::</span><span class="kw">ma.plot</span>(A, M)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-159-1.png" width="1152" /></p>
+<p>See also this <a href="http://simplystatistics.org/2015/08/12/correlation-is-not-a-measure-of-reproducibility/">post</a> on the <em>Simply Statistics</em> blog.</p>
+</div>
+<div id="linear-modelling" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Linear modelling</h3>
+<p><code>abline(0, 1)</code> can be used to add a line with intercept 0 and slop 1. It we want to add the line that models the data linearly, we can calculate the parameters using the <code>lm</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lmod &lt;-<span class="st"> </span><span class="kw">lm</span>(r2 <span class="op">~</span><span class="st"> </span>r1)
+<span class="kw">summary</span>(lmod)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = r2 ~ r1)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.2943 -0.1321 -0.0111  0.1103  3.4976 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 0.834552   0.105239    7.93 3.05e-15 ***
+## r1          0.965778   0.004225  228.56  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.3758 on 3023 degrees of freedom
+## Multiple R-squared:  0.9453, Adjusted R-squared:  0.9453 
+## F-statistic: 5.224e+04 on 1 and 3023 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>which can be used to add the adequate line that reflects the (linear) relationship between the two data</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(r1, r2)
+<span class="kw">abline</span>(lmod, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<p>As we have seen in the beginning of this section, it is essential not to rely solely on the correlation value, but look at the data. This also holds true for linear (or any) modelling, which can be done by plotting the model:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(lmod)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
+<ul>
+<li><p><em>Cook’s distance</em> is a commonly used estimate of the influence of a data point when performing a least-squares regression analysis and can be used to highlight points that particularly influence the regression.</p></li>
+<li><p><em>Leverage</em> quantifies the influence of a given observation on the regression due to its location in the space of the inputs.</p></li>
+</ul>
+<p>See also <code>?influence.measures</code>.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ol style="list-style-type: decimal">
+<li>Take any of the <code>iprg2</code> replicates, model and plot their linear relationship. The <code>iprg2</code> data is available as an <code>rda</code> file, or regenerate it as shown above.</li>
+<li>The Anscombe quartet is available as <code>anscombe</code>. Load it, create a linear model for one <span class="math inline">\((x_i, y_i)\)</span> pair of your choice and visualise/check the model.</li>
+</ol>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x3 &lt;-<span class="st"> </span>anscombe[, <span class="dv">3</span>]
+y3 &lt;-<span class="st"> </span>anscombe[, <span class="dv">7</span>]
+lmod &lt;-<span class="st"> </span><span class="kw">lm</span>(y3 <span class="op">~</span><span class="st"> </span>x3)
+<span class="kw">summary</span>(lmod)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y3 ~ x3)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.1586 -0.6146 -0.2303  0.1540  3.2411 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)   3.0025     1.1245   2.670  0.02562 * 
+## x3            0.4997     0.1179   4.239  0.00218 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.236 on 9 degrees of freedom
+## Multiple R-squared:  0.6663, Adjusted R-squared:  0.6292 
+## F-statistic: 17.97 on 1 and 9 DF,  p-value: 0.002176</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(lmod)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-163-1.png" width="672" /> </details></p>
+<p>Finally, let’s conclude by illustrating how <code>ggplot2</code> can very elegantly be used to produce similar plots, with useful annotations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
+dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(r1, r2, M, A)
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> r1, <span class="dt">y =</span> r2), <span class="dt">data =</span> dfr) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_quantile</span>(<span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Computation failed in `stat_quantile()`:
+## Package `quantreg` required for `stat_quantile`.
+## Please install and try again.</code></pre>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Replicate the MA plot above using <code>ggplot2</code>. Then add a non-parametric lowess regression using <code>geom_smooth()</code>.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> A, <span class="dt">y =</span> M), <span class="dt">data =</span> dfr) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_quantile</span>(<span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## Warning: Computation failed in `stat_quantile()`:
+## Package `quantreg` required for `stat_quantile`.
+## Please install and try again.</code></pre>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-165-1.png" width="672" /> </details></p>
+</div>
+<div id="supplementary-information-working-with-statistical-distributions" class="section level3 unnumbered">
+<h3>Supplementary information: Working with statistical distributions</h3>
+<p>For each statistical distribution, we have function to compute</p>
+<ul>
+<li>density</li>
+<li>distribution function</li>
+<li>quantile function</li>
+<li>random generation</li>
+</ul>
+<p>For the normale distribution <code>norm</code>, these are respectively</p>
+<ul>
+<li><code>dnorm</code></li>
+<li><code>pnorm</code></li>
+<li><code>qnorm</code></li>
+<li><code>rnorm</code></li>
+</ul>
+<p>Let’s start by sampling 10000 values from a normal distribution <span class="math inline">\(N(0, 1)\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xn &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="fl">1e6</span>)
+<span class="kw">hist</span>(xn, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
+<span class="kw">rug</span>(xn)
+<span class="kw">lines</span>(<span class="kw">density</span>(xn), <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<p>By definition, the area under the density curve is 1. The area at the left of 0, 1, and 2 are respectively:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 0.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 0.8413447</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 0.9772499</code></pre>
+<p>To ask the inverse question, we use the quantile function. The obtain 0.5, 0.8413447 and 0.9772499 of our distribution, we need means of:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.5</span>)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="kw">pnorm</span>(<span class="dv">1</span>))</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="kw">pnorm</span>(<span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Finally, the density function gives us the <em>height</em> at which we are for a given mean:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(xn, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
+<span class="kw">lines</span>(<span class="kw">density</span>(xn), <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="kw">points</span>(<span class="dv">0</span>, <span class="kw">dnorm</span>(<span class="dv">0</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">points</span>(<span class="dv">1</span>, <span class="kw">dnorm</span>(<span class="dv">1</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">points</span>(<span class="dv">2</span>, <span class="kw">dnorm</span>(<span class="dv">2</span>), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-analysis-with-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["RIntro.pdf", "RIntro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

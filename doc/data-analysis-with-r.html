@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Chapter 2 Data analysis with R | May Institute 2019: Beginner’s statistics in R</title>
+  <meta name="description" content="Chapter 2 Data analysis with R | May Institute 2019: Beginner’s statistics in R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="Chapter 2 Data analysis with R | May Institute 2019: Beginner’s statistics in R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Data analysis with R | May Institute 2019: Beginner’s statistics in R" />
+  
+  
+  
+
+<meta name="author" content="Laurent Gatto and Meena Choi">
+
+
+<meta name="date" content="2019-04-30">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="getting-started-with-r-and-rstudio.html">
+<link rel="next" href="introductory-statistics-with-r.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Beginner's statistics in R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Before we start</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#suggested-reading"><i class="fa fa-check"></i>Suggested reading</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#schedule"><i class="fa fa-check"></i>Schedule</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#credit"><i class="fa fa-check"></i>Credit</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>1</b> Getting started with R and RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> R and RStudio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#what-is-r-what-is-rstudio"><i class="fa fa-check"></i><b>1.1.1</b> What is R? What is RStudio?</a></li>
+<li class="chapter" data-level="1.1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#why-learn-r"><i class="fa fa-check"></i><b>1.1.2</b> Why learn R?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#knowing-your-way-around-rstudio"><i class="fa fa-check"></i><b>1.1.3</b> Knowing your way around RStudio</a></li>
+<li class="chapter" data-level="1.1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-set-up"><i class="fa fa-check"></i><b>1.1.4</b> Getting set up</a></li>
+<li class="chapter" data-level="1.1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#organizing-your-working-directory"><i class="fa fa-check"></i><b>1.1.5</b> Organizing your working directory</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#interacting-with-r"><i class="fa fa-check"></i><b>1.2</b> Interacting with R</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#seeking-help"><i class="fa fa-check"></i><b>1.3</b> Seeking help</a><ul>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#use-the-built-in-rstudio-help-interface-to-search-for-more-information-on-r-functions"><i class="fa fa-check"></i>Use the built-in RStudio help interface to search for more information on R functions</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-know-the-name-of-the-function-i-want-to-use-but-im-not-sure-how-to-use-it"><i class="fa fa-check"></i>I know the name of the function I want to use, but I’m not sure how to use it</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-want-to-use-a-function-that-does-x-there-must-be-a-function-for-it-but-i-dont-know-which-one"><i class="fa fa-check"></i>I want to use a function that does X, there must be a function for it but I don’t know which one…</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#i-am-stuck-i-get-an-error-message-that-i-dont-understand"><i class="fa fa-check"></i>I am stuck… I get an error message that I don’t understand</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#asking-for-help"><i class="fa fa-check"></i>Asking for help</a></li>
+<li class="chapter" data-level="" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#where-to-ask-for-help"><i class="fa fa-check"></i>Where to ask for help?</a></li>
+<li class="chapter" data-level="1.3.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#more-resources"><i class="fa fa-check"></i><b>1.3.1</b> More resources</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-packages"><i class="fa fa-check"></i><b>1.4</b> Installing packages</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#introduction-to-r"><i class="fa fa-check"></i><b>1.5</b> Introduction to R</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#creating-objects-in-r"><i class="fa fa-check"></i><b>1.5.1</b> Creating objects in R</a></li>
+<li class="chapter" data-level="1.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#comments"><i class="fa fa-check"></i><b>1.5.2</b> Comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>1.5.3</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="1.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#objects-vs.variables"><i class="fa fa-check"></i><b>1.5.4</b> Objects vs. variables</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#vectors-and-data-types"><i class="fa fa-check"></i><b>1.6</b> Vectors and data types</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#conditional-subsetting"><i class="fa fa-check"></i><b>1.6.1</b> Conditional subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#missing-data"><i class="fa fa-check"></i><b>1.7</b> Missing data</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>1.8</b> R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html"><i class="fa fa-check"></i><b>2</b> Data analysis with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-analysis"><i class="fa fa-check"></i><b>2.1</b> Data analysis</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#reading-in-data"><i class="fa fa-check"></i><b>2.1.1</b> Reading in data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-frames"><i class="fa fa-check"></i><b>2.1.2</b> Data frames</a></li>
+<li class="chapter" data-level="2.1.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#inspecting-data.frame-objects"><i class="fa fa-check"></i><b>2.1.3</b> Inspecting <code>data.frame</code> objects</a></li>
+<li class="chapter" data-level="2.1.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#indexing-and-subsetting-data-frames"><i class="fa fa-check"></i><b>2.1.4</b> Indexing and subsetting data frames</a></li>
+<li class="chapter" data-level="2.1.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#factors"><i class="fa fa-check"></i><b>2.1.5</b> Factors</a></li>
+<li class="chapter" data-level="2.1.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#other-data-structures"><i class="fa fa-check"></i><b>2.1.6</b> Other data structures</a></li>
+<li class="chapter" data-level="2.1.7" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-exploration"><i class="fa fa-check"></i><b>2.1.7</b> Data exploration</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#manipulating-and-analyzing-data-with-dplyr"><i class="fa fa-check"></i><b>2.2</b> Manipulating and analyzing data with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#what-are-dplyr-and-tidyr"><i class="fa fa-check"></i><b>2.2.1</b> What are <strong><code>dplyr</code></strong> and <strong><code>tidyr</code></strong>?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#selecting-columns-and-filtering-rows"><i class="fa fa-check"></i><b>2.2.2</b> Selecting columns and filtering rows</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#pipes"><i class="fa fa-check"></i><b>2.2.3</b> Pipes</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#mutate"><i class="fa fa-check"></i><b>2.2.4</b> Mutate</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#split-apply-combine-data-analysis-and-the-summarize-function"><i class="fa fa-check"></i><b>2.2.5</b> Split-apply-combine data analysis and the summarize() function</a></li>
+<li class="chapter" data-level="2.2.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-and-exporting-data"><i class="fa fa-check"></i><b>2.2.6</b> Saving and exporting data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#data-visualisation"><i class="fa fa-check"></i><b>2.3</b> Data visualisation</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#histogram"><i class="fa fa-check"></i><b>2.3.1</b> Histogram</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#boxplot-or-box-and-whisker-plot"><i class="fa fa-check"></i><b>2.3.2</b> Boxplot or box-and-whisker plot</a></li>
+<li class="chapter" data-level="2.3.3" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#the-ggplot2-package"><i class="fa fa-check"></i><b>2.3.3</b> The <code>ggplot2</code> package</a></li>
+<li class="chapter" data-level="2.3.4" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#customising-plots"><i class="fa fa-check"></i><b>2.3.4</b> Customising plots</a></li>
+<li class="chapter" data-level="2.3.5" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-your-figures"><i class="fa fa-check"></i><b>2.3.5</b> Saving your figures</a></li>
+<li class="chapter" data-level="2.3.6" data-path="data-analysis-with-r.html"><a href="data-analysis-with-r.html#saving-our-results"><i class="fa fa-check"></i><b>2.3.6</b> Saving our results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html"><i class="fa fa-check"></i><b>3</b> Introductory statistics with R</a><ul>
+<li class="chapter" data-level="3.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#basic-statistics"><i class="fa fa-check"></i><b>3.1</b> Basic statistics</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#randomization"><i class="fa fa-check"></i><b>3.1.1</b> Randomization</a></li>
+<li class="chapter" data-level="3.1.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#basic-statistical-summaries"><i class="fa fa-check"></i><b>3.1.2</b> Basic statistical summaries</a></li>
+<li class="chapter" data-level="3.1.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#visualization-with-error-bars-for-descriptive-purpose"><i class="fa fa-check"></i><b>3.1.3</b> Visualization with error bars for descriptive purpose</a></li>
+<li class="chapter" data-level="3.1.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#working-with-statistical-distributions"><i class="fa fa-check"></i><b>3.1.4</b> Working with statistical distributions</a></li>
+<li class="chapter" data-level="3.1.5" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#calculate-the-confidence-interval"><i class="fa fa-check"></i><b>3.1.5</b> Calculate the confidence interval</a></li>
+<li class="chapter" data-level="3.1.6" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#saving-our-results-1"><i class="fa fa-check"></i><b>3.1.6</b> Saving our results</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#statistical-hypothesis-test"><i class="fa fa-check"></i><b>3.2</b> Statistical hypothesis test</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#two-sample-t-test-for-one-protein-with-one-feature"><i class="fa fa-check"></i><b>3.2.1</b> Two sample t-test for one protein with one feature</a></li>
+<li class="chapter" data-level="3.2.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#the-htest-class"><i class="fa fa-check"></i><b>3.2.2</b> The <code>htest</code> class</a></li>
+<li class="chapter" data-level="3.2.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#re-calculating-the-p-values"><i class="fa fa-check"></i><b>3.2.3</b> Re-calculating the p values</a></li>
+<li class="chapter" data-level="3.2.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#choosing-a-model"><i class="fa fa-check"></i><b>3.2.4</b> Choosing a model</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#sample-size-calculation"><i class="fa fa-check"></i><b>3.3</b> Sample size calculation</a><ul>
+<li class="chapter" data-level="" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#r-code"><i class="fa fa-check"></i>R code</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#linear-models-and-correlation"><i class="fa fa-check"></i><b>3.4</b> Linear models and correlation</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#correlation"><i class="fa fa-check"></i><b>3.4.1</b> Correlation</a></li>
+<li class="chapter" data-level="3.4.2" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#a-note-on-correlation-and-replication"><i class="fa fa-check"></i><b>3.4.2</b> A note on correlation and replication</a></li>
+<li class="chapter" data-level="3.4.3" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#linear-modelling"><i class="fa fa-check"></i><b>3.4.3</b> Linear modelling</a></li>
+<li class="chapter" data-level="" data-path="introductory-statistics-with-r.html"><a href="introductory-statistics-with-r.html#supplementary-information-working-with-statistical-distributions"><i class="fa fa-check"></i>Supplementary information: Working with statistical distributions</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">May Institute 2019: Beginner’s statistics in R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-analysis-with-r" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Data analysis with R</h1>
+<p><strong>Objectives</strong></p>
+<ul>
+<li>Reading data in R</li>
+<li>Data manipulation and exploration</li>
+<li>Visualisation</li>
+</ul>
+<p>The <code>data.frame</code> and <code>ggplot2</code> sections are based on the <a href="http://www.datacarpentry.org/R-ecology-lesson/index.html">R for data analysis and visualization</a> Data Carpentry course.</p>
+<div id="data-analysis" class="section level2">
+<h2><span class="header-section-number">2.1</span> Data analysis</h2>
+<div id="reading-in-data" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Reading in data</h3>
+<p>The file we’ll be reading in is a dataset that has been 1) processed in Skyline and 2) summarized by each run and protein with <code>MSstats</code>. We will practice with it.</p>
+<p><strong>Tip</strong> Often you’ll get data delivered as a Microsoft Excel file. You can export any spreadsheet to a <code>.csv</code> (comma separated values) file in Excel through the <code>Save As.. &gt; Format: Comma Separated Values (.csv)</code> menu item.</p>
+<p>In Rstudio, go to the <code>environnment</code> pane, click on <code>Import Dataset</code> dropdown and choose <code>From Text File...</code> from the dropdown menu. Import the <code>iPRG_example_runsummary.csv</code> file from your data directory, and inspect that Rstudio correctly parsed the text file into an R <code>data.frame</code>.</p>
+<p>Now inspect the <code>Console</code> <code>Environment</code> pane again. Notice that a new variable for the <code>iPRG_example</code> data frame was created in the environment by executing the <code>read.csv</code> function. Let’s have a look at the documentation for this function by pulling up the help pages with the <code>?</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/iPRG_example_runsummary.csv&quot;</span>)</code></pre></div>
+</div>
+<div id="data-frames" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Data frames</h3>
+<div id="tidy-data" class="section level4">
+<h4><span class="header-section-number">2.1.2.1</span> Tidy data</h4>
+<p>The <code>iprg</code> object that we created is a <code>data.frame</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(iprg)</code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>These object are the equivalent of a sheet in a spreadsheet file. They are composed on a set of columns, which are different vectors (or characters, numerics, factors, …) as seen previously.</p>
+<p>There are actually some additional cont strains compared to a spreadsheet. Rather than being limitations, these constrains are an important feature that allow some standardisation and hence automatic computations.</p>
+<ul>
+<li><p>All the data in a <code>data.frame</code> must be included in a column, as a vector. This means that it’s not possible to add <em>random</em> notes or values, as is sometimes seen in spreadsheets.</p></li>
+<li><p>All columns/vectors must have the same length, as opposed to spreadsheets, where sometimes some values or summary statistics are added at the bottom.</p></li>
+<li><p>No colours or font decorations.</p></li>
+</ul>
+<p>This leads us to a very important concept in data formatting and data manipulation, which is that data should be <em>tidy</em>, where</p>
+<ul>
+<li>Columns describe different variables</li>
+<li>Rows describe different observations</li>
+<li>A cell contains a measurement or piece of information for a single observation.</li>
+</ul>
+<p>There are two important reasons that we want tidy data</p>
+<ol style="list-style-type: decimal">
+<li>No need to tidy it up, which is a task many of us waste way to much time with.</li>
+<li>The data is well structured, easy to read in, whatever the software or programming languages, and is easy to reason about.</li>
+</ol>
+<p>Note that data is always tidy, and for good reasons so. For example, omics data is often presented as shown below</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">JD_06232014_sample1-A.raw</th>
+<th align="right">JD_06232014_sample1_B.raw</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sp|D6VTK4|STE2_YEAST</td>
+<td align="right">26.58301</td>
+<td align="right">26.81232</td>
+</tr>
+<tr class="even">
+<td>sp|O13297|CET1_YEAST</td>
+<td align="right">24.71809</td>
+<td align="right">24.71912</td>
+</tr>
+<tr class="odd">
+<td>sp|O13329|FOB1_YEAST</td>
+<td align="right">23.47075</td>
+<td align="right">23.37678</td>
+</tr>
+<tr class="even">
+<td>sp|O13539|THP2_YEAST</td>
+<td align="right">24.29661</td>
+<td align="right">27.52021</td>
+</tr>
+<tr class="odd">
+<td>sp|O13547|CCW14_YEAST</td>
+<td align="right">27.11638</td>
+<td align="right">27.22234</td>
+</tr>
+</tbody>
+</table>
+<p>which is not strictly tidy, as the protein intensity is presented along multiple columns. Some situations lend themselves more to a long or wide format (as we will see later), but the data should never be <em>messy</em>, as for example below:</p>
+<p><img src="figure/multiple-info.png" alt="messy data" /> <img src="figure/2_datasheet_example.jpg" alt="Help!" /></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Compare the structure of the data presented above (loaded from the <code>iprg2.rda</code> files) and the <code>iprg</code> data.</p>
+</blockquote>
+</div>
+<div id="what-are-data-frames" class="section level4">
+<h4><span class="header-section-number">2.1.2.2</span> What are data frames?</h4>
+<p>Data frames are the <em>de facto</em> data structure for most tabular data, and what we use for statistics and plotting.</p>
+<p>A data frame can be created by hand, but most commonly they are generated by the functions <code>read.csv()</code> or <code>read.table()</code>; in other words, when importing spreadsheets from your hard drive (or the web).</p>
+<p>A data frame is the representation of data in the format of a table where the columns are vectors that all have the same length. Because the column are vectors, they all contain the same type of data (e.g., characters, integers, factors). We can see this when inspecting the <b>str</b>ucture of a data frame with the function <code>str()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(iprg)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    36321 obs. of  7 variables:
+##  $ Protein      : Factor w/ 3027 levels &quot;sp|D6VTK4|STE2_YEAST&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Log2Intensity: num  26.8 26.6 26.6 26.8 26.8 ...
+##  $ Run          : Factor w/ 12 levels &quot;JD_06232014_sample1_B.raw&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Condition    : Factor w/ 4 levels &quot;Condition1&quot;,&quot;Condition2&quot;,..: 1 1 1 2 2 2 3 3 3 4 ...
+##  $ BioReplicate : int  1 1 1 2 2 2 3 3 3 4 ...
+##  $ Intensity    : num  1.18e+08 1.02e+08 1.01e+08 1.20e+08 1.16e+08 ...
+##  $ TechReplicate: Factor w/ 3 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;: 2 3 1 1 2 3 1 2 3 2 ...</code></pre>
+</div>
+</div>
+<div id="inspecting-data.frame-objects" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> Inspecting <code>data.frame</code> objects</h3>
+<p>We already saw how the functions <code>head()</code> and <code>str()</code> can be useful to check the content and the structure of a data frame. Here is a non-exhaustive list of functions to get a sense of the content/structure of the data. Let’s try them out!</p>
+<ul>
+<li>Size:
+<ul>
+<li><code>dim(iprg)</code> - returns a vector with the number of rows in the first element, and the number of columns as the second element (the <strong>dim</strong>ensions of the object)</li>
+<li><code>nrow(iprg)</code> - returns the number of rows</li>
+<li><code>ncol(iprg)</code> - returns the number of columns</li>
+</ul></li>
+<li>Content:
+<ul>
+<li><code>head(iprg)</code> - shows the first 6 rows</li>
+<li><code>tail(iprg)</code> - shows the last 6 rows</li>
+</ul></li>
+<li>Names:
+<ul>
+<li><code>names(iprg)</code> - returns the column names (synonym of <code>colnames()</code> for <code>data.frame</code> objects)</li>
+<li><code>rownames(iprg)</code> - returns the row names</li>
+</ul></li>
+<li>Summary:
+<ul>
+<li><code>str(iprg)</code> - structure of the object and information about the class, length and content of each column</li>
+<li><code>summary(iprg)</code> - summary statistics for each column</li>
+</ul></li>
+</ul>
+<p>Note: most of these functions are “generic”, they can be used on other types of objects besides <code>data.frame</code>.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Based on the output of <code>str(iprg)</code>, can you answer the following questions?</p>
+<ul>
+<li>What is the class of the object <code>iprg</code>?</li>
+<li>How many rows and how many columns are in this object?</li>
+<li>How many proteins have been assayed?</li>
+</ul>
+</blockquote>
+</div>
+<div id="indexing-and-subsetting-data-frames" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> Indexing and subsetting data frames</h3>
+<p>Our data frame has rows and columns (it has 2 dimensions), if we want to extract some specific data from it, we need to specify the <em>coordinates</em> we want from it. Row numbers come first, followed by column numbers. However, note that different ways of specifying these coordinates lead to results with different classes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg[<span class="dv">1</span>]      <span class="co"># first column in the data frame (as a data.frame)</span>
+iprg[, <span class="dv">1</span>]    <span class="co"># first column in the data frame (as a vector)</span>
+iprg[<span class="dv">1</span>, <span class="dv">1</span>]   <span class="co"># first element in the first column of the data frame (as a vector)</span>
+iprg[<span class="dv">1</span>, <span class="dv">6</span>]   <span class="co"># first element in the 6th column (as a vector)</span>
+iprg[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span>] <span class="co"># first three elements in the 3rd column (as a vector)</span>
+iprg[<span class="dv">3</span>, ]    <span class="co"># the 3rd element for all columns (as a data.frame)</span>
+head_iprg &lt;-<span class="st"> </span>iprg[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ] <span class="co"># equivalent to head(iprg)</span></code></pre></div>
+<p><code>:</code> is a special function that creates numeric vectors of integers in increasing or decreasing order, test <code>1:10</code> and <code>10:1</code> for instance.</p>
+<p>You can also exclude certain parts of a data frame using the <code>-</code> sign:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg[, <span class="dv">-1</span>]          <span class="co"># The whole data frame, except the first column</span>
+iprg[<span class="op">-</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">36321</span>), ] <span class="co"># Equivalent to head(iprg)</span></code></pre></div>
+<p>As well as using numeric values to subset a <code>data.frame</code> columns can be called by name, using one of the four following notations:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg[<span class="st">&quot;Protein&quot;</span>]       <span class="co"># Result is a data.frame</span>
+iprg[, <span class="st">&quot;Protein&quot;</span>]     <span class="co"># Result is a vector</span>
+iprg[[<span class="st">&quot;Protein&quot;</span>]]     <span class="co"># Result is a vector</span>
+iprg<span class="op">$</span>Protein          <span class="co"># Result is a vector</span></code></pre></div>
+<p>For our purposes, the last three notations are equivalent. RStudio knows about the columns in your data frame, so you can take advantage of the autocompletion feature to get the full and correct column name.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Create a <code>data.frame</code> (<code>iprg_200</code>) containing only the observations from row 200 of the <code>iprg</code> dataset.</p></li>
+<li><p>Notice how <code>nrow()</code> gave you the number of rows in a <code>data.frame</code>?</p>
+<ul>
+<li>Use that number to pull out just that last row in the data frame.</li>
+<li>Compare that with what you see as the last row using <code>tail()</code> to make sure it’s meeting expectations.</li>
+<li>Pull out that last row using <code>nrow()</code> instead of the row number.</li>
+<li>Create a new data frame object <code>iprg_last</code> from that last row.</li>
+</ul></li>
+<li><p>Extract the row that is in the middle of the data frame. Store the content of this row in an object named <code>iprg_middle</code>.</p></li>
+<li><p>Combine <code>nrow()</code> with the <code>-</code> notation above to reproduce the behavior of <code>head(iprg)</code> keeping just the first through 6th rows of the <code>iprg</code> dataset.</p></li>
+</ol>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 1.
+iprg_<span class="dv">200</span> &lt;-<span class="st"> </span>iprg[<span class="dv">200</span>, ]
+
+## 2.
+iprg_last &lt;-<span class="st"> </span>iprg[<span class="kw">nrow</span>(iprg), ]
+
+## 3.
+(i &lt;-<span class="st"> </span><span class="kw">floor</span>(<span class="kw">nrow</span>(iprg)<span class="op">/</span><span class="dv">2</span>))</code></pre></div>
+<pre><code>## [1] 18160</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_middle &lt;-<span class="st"> </span>iprg[i, ]
+
+## 4.
+iprg[<span class="op">-</span>(<span class="dv">7</span><span class="op">:</span><span class="kw">nrow</span>(iprg)), ]</code></pre></div>
+<pre><code>##                Protein Log2Intensity                       Run  Condition
+## 1 sp|D6VTK4|STE2_YEAST      26.81232 JD_06232014_sample1_B.raw Condition1
+## 2 sp|D6VTK4|STE2_YEAST      26.60786 JD_06232014_sample1_C.raw Condition1
+## 3 sp|D6VTK4|STE2_YEAST      26.58301 JD_06232014_sample1-A.raw Condition1
+## 4 sp|D6VTK4|STE2_YEAST      26.83563 JD_06232014_sample2_A.raw Condition2
+## 5 sp|D6VTK4|STE2_YEAST      26.79430 JD_06232014_sample2_B.raw Condition2
+## 6 sp|D6VTK4|STE2_YEAST      26.60863 JD_06232014_sample2_C.raw Condition2
+##   BioReplicate Intensity TechReplicate
+## 1            1 117845016             B
+## 2            1 102273602             C
+## 3            1 100526837             A
+## 4            2 119765106             A
+## 5            2 116382798             B
+## 6            2 102328260             C</code></pre>
+<p></details></p>
+</div>
+<div id="factors" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> Factors</h3>
+<p>When we did <code>str(iprg)</code> we saw that several of the columns consist of numerics, however, the columns <code>Protein</code>, <code>Run</code>, and <code>Condition</code>, are of a special class called a <code>factor</code>. Factors are very useful and are actually something that make R particularly well suited to working with data, so we’re going to spend a little time introducing them.</p>
+<p>Factors are used to represent categorical data. Factors can be ordered or unordered, and understanding them is necessary for statistical analysis and for plotting.</p>
+<p>Factors are stored as integers, and have labels (text) associated with these unique integers. While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings.</p>
+<p>Once created, factors can only contain a pre-defined set of values, known as <em>levels</em>. By default, R always sorts <em>levels</em> in alphabetical order. For instance, if you have a factor with 2 levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sex &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>))</code></pre></div>
+<p>R will assign <code>1</code> to the level <code>&quot;female&quot;</code> and <code>2</code> to the level <code>&quot;male&quot;</code> (because <code>f</code> comes before <code>m</code>, even though the first element in this vector is <code>&quot;male&quot;</code>). You can check this by using the function <code>levels()</code>, and check the number of levels using <code>nlevels()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(sex)</code></pre></div>
+<pre><code>## [1] &quot;female&quot; &quot;male&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(sex)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., “low”, “medium”, “high”), it improves your visualization, or it is required by a particular type of analysis. Here, one way to reorder our levels in the <code>sex</code> vector would be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sex <span class="co"># current order</span></code></pre></div>
+<pre><code>## [1] male   female female male  
+## Levels: female male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sex &lt;-<span class="st"> </span><span class="kw">factor</span>(sex, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>))
+sex <span class="co"># after re-ordering</span></code></pre></div>
+<pre><code>## [1] male   female female male  
+## Levels: male female</code></pre>
+<p>In R’s memory, these factors are represented by integers (1, 2, 3), but are more informative than integers because factors are self describing: <code>&quot;female&quot;</code>, <code>&quot;male&quot;</code> is more descriptive than <code>1</code>, <code>2</code>. Which one is “male”? You wouldn’t be able to tell just from the integer data. Factors, on the other hand, have this information built in. It is particularly helpful when there are many levels (like the species names in our example dataset).</p>
+<div id="converting-factors" class="section level4">
+<h4><span class="header-section-number">2.1.5.1</span> Converting factors</h4>
+<p>If you need to convert a factor to a character vector, you use <code>as.character(x)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(sex)</code></pre></div>
+<pre><code>## [1] &quot;male&quot;   &quot;female&quot; &quot;female&quot; &quot;male&quot;</code></pre>
+</div>
+<div id="using-stringsasfactorsfalse" class="section level4">
+<h4><span class="header-section-number">2.1.5.2</span> Using <code>stringsAsFactors=FALSE</code></h4>
+<p>By default, when building or importing a data frame, the columns that contain characters (i.e., text) are coerced (=converted) into the <code>factor</code> data type. Depending on what you want to do with the data, you may want to keep these columns as <code>character</code>. To do so, <code>read.csv()</code> and <code>read.table()</code> have an argument called <code>stringsAsFactors</code> which can be set to <code>FALSE</code>.</p>
+<p>In most cases, it’s preferable to set <code>stringsAsFactors = FALSE</code> when importing your data, and converting as a factor only the columns that require this data type.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Compare the output of <code>str(surveys)</code> when setting <code>stringsAsFactors = TRUE</code> (default) and <code>stringsAsFactors = FALSE</code>:</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iPRG_example_runsummary.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)
+<span class="kw">str</span>(iprg)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    36321 obs. of  7 variables:
+##  $ Protein      : Factor w/ 3027 levels &quot;sp|D6VTK4|STE2_YEAST&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Log2Intensity: num  26.8 26.6 26.6 26.8 26.8 ...
+##  $ Run          : Factor w/ 12 levels &quot;JD_06232014_sample1_B.raw&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Condition    : Factor w/ 4 levels &quot;Condition1&quot;,&quot;Condition2&quot;,..: 1 1 1 2 2 2 3 3 3 4 ...
+##  $ BioReplicate : int  1 1 1 2 2 2 3 3 3 4 ...
+##  $ Intensity    : num  1.18e+08 1.02e+08 1.01e+08 1.20e+08 1.16e+08 ...
+##  $ TechReplicate: Factor w/ 3 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;: 2 3 1 1 2 3 1 2 3 2 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iPRG_example_runsummary.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<span class="kw">str</span>(iprg)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    36321 obs. of  7 variables:
+##  $ Protein      : chr  &quot;sp|D6VTK4|STE2_YEAST&quot; &quot;sp|D6VTK4|STE2_YEAST&quot; &quot;sp|D6VTK4|STE2_YEAST&quot; &quot;sp|D6VTK4|STE2_YEAST&quot; ...
+##  $ Log2Intensity: num  26.8 26.6 26.6 26.8 26.8 ...
+##  $ Run          : chr  &quot;JD_06232014_sample1_B.raw&quot; &quot;JD_06232014_sample1_C.raw&quot; &quot;JD_06232014_sample1-A.raw&quot; &quot;JD_06232014_sample2_A.raw&quot; ...
+##  $ Condition    : chr  &quot;Condition1&quot; &quot;Condition1&quot; &quot;Condition1&quot; &quot;Condition2&quot; ...
+##  $ BioReplicate : int  1 1 1 2 2 2 3 3 3 4 ...
+##  $ Intensity    : num  1.18e+08 1.02e+08 1.01e+08 1.20e+08 1.16e+08 ...
+##  $ TechReplicate: chr  &quot;B&quot; &quot;C&quot; &quot;A&quot; &quot;A&quot; ...</code></pre>
+<p></details></p>
+</div>
+</div>
+<div id="other-data-structures" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> Other data structures</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th>dimensions</th>
+<th>number of types</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>vector</code></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td align="left"><code>matrix</code></td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>array</code></td>
+<td>any</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td align="left"><code>data.frame</code></td>
+<td>2</td>
+<td>1 per colums</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>list</code></td>
+<td>1 (length)</td>
+<td>any</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-exploration" class="section level3">
+<h3><span class="header-section-number">2.1.7</span> Data exploration</h3>
+<p>Let’s explore some basic properties of our dataset. Go to the RStudio Environment pane and double click the <code>iPRG_example</code> entry. This data is in tidy, long format, which is an easier data format for data manipulation operations such as selecting, grouping, summarizing, etc.</p>
+<p>Data exported out of many omics processing or quantification tools are often formatted in <em>wide</em> format, which is easier to read when we would like to compare values (i.e intensity values) for specific subjects (i.e peptides) across different values for a variable of interest such as (i.e conditions). We’ll format a summary of this dataset as a ‘wide’ data frame later in this tutorial.</p>
+<p>Let’s do some more data exploration by examining how R read in the iPRG dataset.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Explore the data as described below</p>
+<ul>
+<li>What is the <em>class</em> of the variable?</li>
+<li>What dimension is it? How many rows and columns does it have?</li>
+<li>What variables (column names) do we have?</li>
+<li>Look at the few first and last lines to make sure the data was imported correctly.</li>
+<li>Display a summary of the whole data.</li>
+</ul>
+</blockquote>
+<p>Let’s now inspect the possible values for the <code>Conditions</code> and the <code>BioReplicate</code> columns. To aswer the questions, below, we will need to use the <code>unique</code> function. From the manual page, we learn that</p>
+<pre><code>&#39;unique&#39; returns a vector, data frame or array like &#39;x&#39; but with
+duplicate elements/rows removed.</code></pre>
+<p>For example</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>))</code></pre></div>
+<pre><code>## [1] 1 2 4 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;a&quot;</span>))</code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dfr &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>),
+                  <span class="dt">y =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>))
+dfr</code></pre></div>
+<pre><code>##   x y
+## 1 1 a
+## 2 1 a
+## 3 2 b</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(dfr)</code></pre></div>
+<pre><code>##   x y
+## 1 1 a
+## 3 2 b</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ol style="list-style-type: decimal">
+<li>How many conditions are there?</li>
+<li>How many biological replicates are there?</li>
+<li>How many condition/technical replicates combinations are there?</li>
+</ol>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 1.
+<span class="kw">unique</span>(iprg<span class="op">$</span>Condition)</code></pre></div>
+<pre><code>## [1] &quot;Condition1&quot; &quot;Condition2&quot; &quot;Condition3&quot; &quot;Condition4&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(iprg<span class="op">$</span>Condition))</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 2.
+<span class="kw">unique</span>(iprg<span class="op">$</span>BioReplicate)</code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">unique</span>(iprg<span class="op">$</span>BioReplicate))</code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 3.
+<span class="kw">unique</span>(iprg<span class="op">$</span>Condition)</code></pre></div>
+<pre><code>## [1] &quot;Condition1&quot; &quot;Condition2&quot; &quot;Condition3&quot; &quot;Condition4&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(iprg<span class="op">$</span>BioReplicate)</code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(iprg[, <span class="kw">c</span>(<span class="st">&quot;Condition&quot;</span>, <span class="st">&quot;TechReplicate&quot;</span>)])</code></pre></div>
+<pre><code>##     Condition TechReplicate
+## 1  Condition1             B
+## 2  Condition1             C
+## 3  Condition1             A
+## 4  Condition2             A
+## 5  Condition2             B
+## 6  Condition2             C
+## 7  Condition3             A
+## 8  Condition3             B
+## 9  Condition3             C
+## 10 Condition4             B
+## 11 Condition4             C
+## 12 Condition4             A</code></pre>
+<p></details></p>
+<p>It is often useful to start a preliminary analysis, or proceed with a more detailed data exploration using a smalle subset of the data.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Select subsets of rows from iPRG dataset. Let’s focus on</p>
+<ul>
+<li>Condition 1 only</li>
+<li>Condition 1 and TechReplicate A</li>
+<li>all measurements on one particular MS run.</li>
+<li>Conditions 1 and 2</li>
+</ul>
+<p>For each of there, how many measurements are there?</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_c1 &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Condition <span class="op">==</span><span class="st"> &quot;Condition1&quot;</span>, ]
+<span class="kw">head</span>(iprg_c1)</code></pre></div>
+<pre><code>##                 Protein Log2Intensity                       Run  Condition
+## 1  sp|D6VTK4|STE2_YEAST      26.81232 JD_06232014_sample1_B.raw Condition1
+## 2  sp|D6VTK4|STE2_YEAST      26.60786 JD_06232014_sample1_C.raw Condition1
+## 3  sp|D6VTK4|STE2_YEAST      26.58301 JD_06232014_sample1-A.raw Condition1
+## 13 sp|O13297|CET1_YEAST      24.71912 JD_06232014_sample1_B.raw Condition1
+## 14 sp|O13297|CET1_YEAST      24.67437 JD_06232014_sample1_C.raw Condition1
+## 15 sp|O13297|CET1_YEAST      24.71809 JD_06232014_sample1-A.raw Condition1
+##    BioReplicate Intensity TechReplicate
+## 1             1 117845016             B
+## 2             1 102273602             C
+## 3             1 100526837             A
+## 13            1  27618234             B
+## 14            1  26774670             C
+## 15            1  27598550             A</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iprg_c1)</code></pre></div>
+<pre><code>## [1] 9079</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_c1A &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Condition <span class="op">==</span><span class="st"> &quot;Condition1&quot;</span> <span class="op">&amp;</span><span class="st"> </span>iprg<span class="op">$</span>TechReplicate <span class="op">==</span><span class="st"> &quot;A&quot;</span>, ]
+<span class="kw">head</span>(iprg_c1A)</code></pre></div>
+<pre><code>##                  Protein Log2Intensity                       Run
+## 3   sp|D6VTK4|STE2_YEAST      26.58301 JD_06232014_sample1-A.raw
+## 15  sp|O13297|CET1_YEAST      24.71809 JD_06232014_sample1-A.raw
+## 27  sp|O13329|FOB1_YEAST      23.47075 JD_06232014_sample1-A.raw
+## 39  sp|O13539|THP2_YEAST      24.29661 JD_06232014_sample1-A.raw
+## 51 sp|O13547|CCW14_YEAST      27.11638 JD_06232014_sample1-A.raw
+## 63 sp|O13563|RPN13_YEAST      26.17056 JD_06232014_sample1-A.raw
+##     Condition BioReplicate Intensity TechReplicate
+## 3  Condition1            1 100526837             A
+## 15 Condition1            1  27598550             A
+## 27 Condition1            1  11625198             A
+## 39 Condition1            1  20606703             A
+## 51 Condition1            1 145493943             A
+## 63 Condition1            1  75530595             A</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iprg_c1A)</code></pre></div>
+<pre><code>## [1] 3026</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_r1 &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Run <span class="op">==</span><span class="st"> &quot;JD_06232014_sample1_B.raw&quot;</span>, ]
+<span class="kw">head</span>(iprg_r1)</code></pre></div>
+<pre><code>##                  Protein Log2Intensity                       Run
+## 1   sp|D6VTK4|STE2_YEAST      26.81232 JD_06232014_sample1_B.raw
+## 13  sp|O13297|CET1_YEAST      24.71912 JD_06232014_sample1_B.raw
+## 25  sp|O13329|FOB1_YEAST      23.37678 JD_06232014_sample1_B.raw
+## 37  sp|O13539|THP2_YEAST      27.52021 JD_06232014_sample1_B.raw
+## 49 sp|O13547|CCW14_YEAST      27.22234 JD_06232014_sample1_B.raw
+## 61 sp|O13563|RPN13_YEAST      26.09476 JD_06232014_sample1_B.raw
+##     Condition BioReplicate Intensity TechReplicate
+## 1  Condition1            1 117845016             B
+## 13 Condition1            1  27618234             B
+## 25 Condition1            1  10892143             B
+## 37 Condition1            1 192490784             B
+## 49 Condition1            1 156581624             B
+## 61 Condition1            1  71664672             B</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iprg_r1)</code></pre></div>
+<pre><code>## [1] 3026</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_c12 &lt;-<span class="st"> </span>iprg[iprg<span class="op">$</span>Condition <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Condition1&quot;</span>, <span class="st">&quot;Condition2&quot;</span>), ]
+<span class="kw">head</span>(iprg_c12)</code></pre></div>
+<pre><code>##                Protein Log2Intensity                       Run  Condition
+## 1 sp|D6VTK4|STE2_YEAST      26.81232 JD_06232014_sample1_B.raw Condition1
+## 2 sp|D6VTK4|STE2_YEAST      26.60786 JD_06232014_sample1_C.raw Condition1
+## 3 sp|D6VTK4|STE2_YEAST      26.58301 JD_06232014_sample1-A.raw Condition1
+## 4 sp|D6VTK4|STE2_YEAST      26.83563 JD_06232014_sample2_A.raw Condition2
+## 5 sp|D6VTK4|STE2_YEAST      26.79430 JD_06232014_sample2_B.raw Condition2
+## 6 sp|D6VTK4|STE2_YEAST      26.60863 JD_06232014_sample2_C.raw Condition2
+##   BioReplicate Intensity TechReplicate
+## 1            1 117845016             B
+## 2            1 102273602             C
+## 3            1 100526837             A
+## 4            2 119765106             A
+## 5            2 116382798             B
+## 6            2 102328260             C</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iprg_c12)</code></pre></div>
+<pre><code>## [1] 18160</code></pre>
+<p></details></p>
+</div>
+</div>
+<div id="manipulating-and-analyzing-data-with-dplyr" class="section level2">
+<h2><span class="header-section-number">2.2</span> Manipulating and analyzing data with <code>dplyr</code></h2>
+<blockquote>
+<p>The following material is based on Data Carpentry’s the <a href="http://www.datacarpentry.org/R-ecology-lesson/">Data analisis and visualisation</a> lessons.</p>
+</blockquote>
+<p>Learning Objectives:</p>
+<ul>
+<li>Understand the purpose of the <strong><code>dplyr</code></strong> package.</li>
+<li>Select certain columns in a data frame with the <strong><code>dplyr</code></strong> function <code>select</code>.</li>
+<li>Select certain rows in a data frame according to filtering conditions with the <strong><code>dplyr</code></strong> function <code>filter</code> .</li>
+<li>Link the output of one <strong><code>dplyr</code></strong> function to the input of another function with the ‘pipe’ operator.</li>
+<li>Add new columns to a data frame that are functions of existing columns with <code>mutate</code>.</li>
+<li>Understand the split-apply-combine concept for data analysis.</li>
+<li>Use <code>summarize</code>, <code>group_by</code>, and <code>tally</code> to split a data frame into groups of observations, apply a summary statistics for each group, and then combine the results.</li>
+</ul>
+<p>Bracket subsetting is handy, but it can be cumbersome and difficult to read, especially for complicated operations. Enter <strong><code>dplyr</code></strong>. <strong><code>dplyr</code></strong> is a package for making tabular data manipulation easier. It pairs nicely with <strong><code>tidyr</code></strong> which enables you to swiftly convert between different data formats for plotting and analysis.</p>
+<p>Packages in R are basically sets of additional functions that let you do more stuff. The functions we’ve been using so far, like <code>str()</code> or <code>data.frame()</code>, come built into R; packages give you access to more of them. Before you use a package for the first time you need to install it on your machine, and then you should import it in every subsequent R session when you need it. You should already have installed the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> package. This is an “umbrella-package” that installs several packages useful for data analysis which work together well such as <code>dplyr</code>, <code>ggplot2</code> (for visualisation), <code>tibble</code>, etc.</p>
+<p>The <code>tidyverse</code> package tries to address 3 major problems with some of base R functions:</p>
+<ol style="list-style-type: decimal">
+<li>The results from a base R function sometimes depends on the type of data.</li>
+<li>Using R expressions in a non standard way, which can be confusing for new learners.</li>
+<li>Hidden arguments, having default operations that new learners are not aware of.</li>
+</ol>
+<p>We have seen in our previous lesson that when building or importing a data frame, the columns that contain characters (i.e., text) are coerced (=converted) into the factor data type. We had to set <strong><code>stringsAsFactor</code></strong> to <strong><code>FALSE</code></strong> to avoid this hidden argument to convert our data type.</p>
+<p>This time will use the <strong><code>tidyverse</code></strong> package to read the data and avoid having to set <strong><code>stringsAsFactor</code></strong> to <strong><code>FALSE</code></strong></p>
+<p>To load the package type:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)  ## load the tidyverse packages, incl. dplyr</code></pre></div>
+<div id="what-are-dplyr-and-tidyr" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> What are <strong><code>dplyr</code></strong> and <strong><code>tidyr</code></strong>?</h3>
+<p>The package <strong><code>dplyr</code></strong> provides easy tools for the most common data manipulation tasks. It is built to work directly with data frames, with many common tasks optimized by being written in a compiled language (C++). An additional feature is the ability to work directly with data stored in an external database. The benefits of doing this are that the data can be managed natively in a relational database, queries can be conducted on that database, and only the results of the query are returned.</p>
+<p>This addresses a common problem with R in that all operations are conducted in-memory and thus the amount of data you can work with is limited by available memory. The database connections essentially remove that limitation in that you can have a database of many 100s GB, conduct queries on it directly, and pull back into R only what you need for analysis.</p>
+<p>The package <strong><code>tidyr</code></strong> addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups - like plots or aquaria. Moving back and forth between these formats is nontrivial, and <strong><code>tidyr</code></strong> gives you tools for this and more sophisticated data manipulation.</p>
+<p>To learn more about <strong><code>dplyr</code></strong> and <strong><code>tidyr</code></strong> after the workshop, you may want to check out this <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">handy data transformation with <strong><code>dplyr</code></strong> cheatsheet</a> and this <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">one about <strong><code>tidyr</code></strong></a>.</p>
+<p><strong><code>dplyr</code></strong> reads data using read_csv(), instead of read.csv()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;data/iPRG_example_runsummary.csv&#39;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Protein = col_character(),
+##   Log2Intensity = col_double(),
+##   Run = col_character(),
+##   Condition = col_character(),
+##   BioReplicate = col_double(),
+##   Intensity = col_double(),
+##   TechReplicate = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## inspect the data
+<span class="kw">str</span>(iprg)</code></pre></div>
+<p>Notice that the class of the data is now <code>tbl_df</code> This is referred to as a “tibble”. Tibbles are data frames, but they tweak some of the old behaviors of data frames. The data structure is very similar to a data frame. For our purposes the only differences are that:</p>
+<ol style="list-style-type: decimal">
+<li>In addition to displaying the data type of each column under its name, it only prints the first few rows of data and only as many columns as fit on one screen.</li>
+<li>Columns of class <code>character</code> are never converted into factors.</li>
+</ol>
+</div>
+<div id="selecting-columns-and-filtering-rows" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Selecting columns and filtering rows</h3>
+<p>We’re going to learn some of the most common <strong><code>dplyr</code></strong> functions: <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>group_by()</code>, and <code>summarize()</code>. To select columns of a data frame, use <code>select()</code>. The first argument to this function is the data frame, and the subsequent arguments are the columns to keep.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(iprg, Protein, Run, Condition)</code></pre></div>
+<p>To choose rows based on a specific criteria, use <code>filter()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(iprg, BioReplicate <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</code></pre></div>
+<pre><code>## # A tibble: 9,079 x 7
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|D6V…          26.8 JD_0… Conditio…            1    1.18e8
+##  2 sp|D6V…          26.6 JD_0… Conditio…            1    1.02e8
+##  3 sp|D6V…          26.6 JD_0… Conditio…            1    1.01e8
+##  4 sp|O13…          24.7 JD_0… Conditio…            1    2.76e7
+##  5 sp|O13…          24.7 JD_0… Conditio…            1    2.68e7
+##  6 sp|O13…          24.7 JD_0… Conditio…            1    2.76e7
+##  7 sp|O13…          23.4 JD_0… Conditio…            1    1.09e7
+##  8 sp|O13…          24.0 JD_0… Conditio…            1    1.69e7
+##  9 sp|O13…          23.5 JD_0… Conditio…            1    1.16e7
+## 10 sp|O13…          27.5 JD_0… Conditio…            1    1.92e8
+## # … with 9,069 more rows, and 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(iprg, Condition <span class="op">==</span><span class="st"> &#39;Condition2&#39;</span>)</code></pre></div>
+<pre><code>## # A tibble: 9,081 x 7
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|D6V…          26.8 JD_0… Conditio…            2    1.20e8
+##  2 sp|D6V…          26.8 JD_0… Conditio…            2    1.16e8
+##  3 sp|D6V…          26.6 JD_0… Conditio…            2    1.02e8
+##  4 sp|O13…          24.5 JD_0… Conditio…            2    2.41e7
+##  5 sp|O13…          24.7 JD_0… Conditio…            2    2.68e7
+##  6 sp|O13…          24.6 JD_0… Conditio…            2    2.51e7
+##  7 sp|O13…          23.2 JD_0… Conditio…            2    9.45e6
+##  8 sp|O13…          23.4 JD_0… Conditio…            2    1.13e7
+##  9 sp|O13…          23.8 JD_0… Conditio…            2    1.43e7
+## 10 sp|O13…          25.9 JD_0… Conditio…            2    6.18e7
+## # … with 9,071 more rows, and 1 more variable: TechReplicate &lt;chr&gt;</code></pre>
+</div>
+<div id="pipes" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Pipes</h3>
+<p>But what if you wanted to select and filter at the same time? There are three ways to do this: use intermediate steps, nested functions, or pipes.</p>
+<p>With intermediate steps, you essentially create a temporary data frame and use that as input to the next function. This can clutter up your workspace with lots of objects. You can also nest functions (i.e. one function inside of another). This is handy, but can be difficult to read if too many functions are nested as things are evaluated from the inside out.</p>
+<p>The last option, pipes, are a fairly recent addition to R. Pipes let you take the output of one function and send it directly to the next, which is useful when you need to do many things to the same dataset. Pipes in R look like <code>%&gt;%</code> and are made available via the <code>magrittr</code> package, installed automatically with <strong><code>dplyr</code></strong>. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Intensity <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e8</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(Protein, Condition, Intensity)</code></pre></div>
+<pre><code>## # A tibble: 4,729 x 3
+##    Protein              Condition   Intensity
+##    &lt;chr&gt;                &lt;chr&gt;           &lt;dbl&gt;
+##  1 sp|D6VTK4|STE2_YEAST Condition1 117845016.
+##  2 sp|D6VTK4|STE2_YEAST Condition1 102273602.
+##  3 sp|D6VTK4|STE2_YEAST Condition1 100526837.
+##  4 sp|D6VTK4|STE2_YEAST Condition2 119765106.
+##  5 sp|D6VTK4|STE2_YEAST Condition2 116382798.
+##  6 sp|D6VTK4|STE2_YEAST Condition2 102328260.
+##  7 sp|D6VTK4|STE2_YEAST Condition3 103830944.
+##  8 sp|D6VTK4|STE2_YEAST Condition4 102150172.
+##  9 sp|D6VTK4|STE2_YEAST Condition4 105724288.
+## 10 sp|O13539|THP2_YEAST Condition1 192490784.
+## # … with 4,719 more rows</code></pre>
+<p>In the above, we use the pipe to send the <code>iprg</code> dataset first through <code>filter()</code> to keep rows where <code>Intensity</code> is greater than 1e8, then through <code>select()</code> to keep only the <code>Protein</code>, <code>Condition</code>, and <code>Intensity</code> columns. Since <code>%&gt;%</code> takes the object on its left and passes it as the first argument to the function on its right, we don’t need to explicitly include it as an argument to the <code>filter()</code> and <code>select()</code> functions anymore.</p>
+<p>If we wanted to create a new object with this smaller version of the data, we could do so by assigning it a new name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg_sml &lt;-<span class="st"> </span>iprg <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Intensity <span class="op">&gt;</span><span class="st"> </span><span class="fl">1e8</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Protein, Condition, Intensity)
+
+iprg_sml</code></pre></div>
+<pre><code>## # A tibble: 4,729 x 3
+##    Protein              Condition   Intensity
+##    &lt;chr&gt;                &lt;chr&gt;           &lt;dbl&gt;
+##  1 sp|D6VTK4|STE2_YEAST Condition1 117845016.
+##  2 sp|D6VTK4|STE2_YEAST Condition1 102273602.
+##  3 sp|D6VTK4|STE2_YEAST Condition1 100526837.
+##  4 sp|D6VTK4|STE2_YEAST Condition2 119765106.
+##  5 sp|D6VTK4|STE2_YEAST Condition2 116382798.
+##  6 sp|D6VTK4|STE2_YEAST Condition2 102328260.
+##  7 sp|D6VTK4|STE2_YEAST Condition3 103830944.
+##  8 sp|D6VTK4|STE2_YEAST Condition4 102150172.
+##  9 sp|D6VTK4|STE2_YEAST Condition4 105724288.
+## 10 sp|O13539|THP2_YEAST Condition1 192490784.
+## # … with 4,719 more rows</code></pre>
+<p>Note that the final data frame is the leftmost part of this expression.</p>
+<blockquote>
+<p>Challenge</p>
+<p>Using pipes, subset the <code>iprg</code> data to include Proteins with a log2 intensity greater than 20 and retain only the columns <code>Proteins</code>, and <code>Condition</code>.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Answer
+iprg <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Log2Intensity <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Protein, Condition)</code></pre></div>
+<p></details></p>
+</div>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Mutate</h3>
+<p>Frequently you’ll want to create new columns based on the values in existing columns, for example to do unit conversions, or find the ratio of values in two columns. For this we’ll use <code>mutate()</code>.</p>
+<p>To create a new column of weight in kg:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity))</code></pre></div>
+<pre><code>## # A tibble: 36,321 x 8
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|D6V…          26.8 JD_0… Conditio…            1    1.18e8
+##  2 sp|D6V…          26.6 JD_0… Conditio…            1    1.02e8
+##  3 sp|D6V…          26.6 JD_0… Conditio…            1    1.01e8
+##  4 sp|D6V…          26.8 JD_0… Conditio…            2    1.20e8
+##  5 sp|D6V…          26.8 JD_0… Conditio…            2    1.16e8
+##  6 sp|D6V…          26.6 JD_0… Conditio…            2    1.02e8
+##  7 sp|D6V…          26.6 JD_0… Conditio…            3    1.04e8
+##  8 sp|D6V…          26.5 JD_0… Conditio…            3    9.47e7
+##  9 sp|D6V…          26.5 JD_0… Conditio…            3    9.69e7
+## 10 sp|D6V…          26.6 JD_0… Conditio…            4    1.02e8
+## # … with 36,311 more rows, and 2 more variables: TechReplicate &lt;chr&gt;,
+## #   Log10Intensity &lt;dbl&gt;</code></pre>
+<p>You can also create a second new column based on the first new column within the same call of <code>mutate()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity),
+           <span class="dt">Log10Intensity2 =</span> Log10Intensity <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)</code></pre></div>
+<pre><code>## # A tibble: 36,321 x 9
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|D6V…          26.8 JD_0… Conditio…            1    1.18e8
+##  2 sp|D6V…          26.6 JD_0… Conditio…            1    1.02e8
+##  3 sp|D6V…          26.6 JD_0… Conditio…            1    1.01e8
+##  4 sp|D6V…          26.8 JD_0… Conditio…            2    1.20e8
+##  5 sp|D6V…          26.8 JD_0… Conditio…            2    1.16e8
+##  6 sp|D6V…          26.6 JD_0… Conditio…            2    1.02e8
+##  7 sp|D6V…          26.6 JD_0… Conditio…            3    1.04e8
+##  8 sp|D6V…          26.5 JD_0… Conditio…            3    9.47e7
+##  9 sp|D6V…          26.5 JD_0… Conditio…            3    9.69e7
+## 10 sp|D6V…          26.6 JD_0… Conditio…            4    1.02e8
+## # … with 36,311 more rows, and 3 more variables: TechReplicate &lt;chr&gt;,
+## #   Log10Intensity &lt;dbl&gt;, Log10Intensity2 &lt;dbl&gt;</code></pre>
+<p>If this runs off your screen and you just want to see the first few rows, you can use a pipe to view the <code>head()</code> of the data. (Pipes work with non-<strong><code>dplyr</code></strong> functions, too, as long as the <strong><code>dplyr</code></strong> or <code>magrittr</code> package is loaded).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity)) <span class="op">%&gt;%</span>
+<span class="st">  </span>head</code></pre></div>
+<pre><code>## # A tibble: 6 x 8
+##   Protein Log2Intensity Run   Condition BioReplicate Intensity
+##   &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+## 1 sp|D6V…          26.8 JD_0… Conditio…            1    1.18e8
+## 2 sp|D6V…          26.6 JD_0… Conditio…            1    1.02e8
+## 3 sp|D6V…          26.6 JD_0… Conditio…            1    1.01e8
+## 4 sp|D6V…          26.8 JD_0… Conditio…            2    1.20e8
+## 5 sp|D6V…          26.8 JD_0… Conditio…            2    1.16e8
+## 6 sp|D6V…          26.6 JD_0… Conditio…            2    1.02e8
+## # … with 2 more variables: TechReplicate &lt;chr&gt;, Log10Intensity &lt;dbl&gt;</code></pre>
+<p>Note that we don’t include parentheses at the end of our call to <code>head()</code> above. When piping into a function with no additional arguments, you can call the function with or without parentheses (e.g. <code>head</code> or <code>head()</code>).</p>
+<p>If you want to display more data, you can use the <code>print()</code> function at the end of your chain with the argument <code>n</code> specifying the number of rows to display:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprg <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity),
+               <span class="dt">Log10Intensity2 =</span> Log10Intensity <span class="op">*</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">print</span>(<span class="dt">n =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>## # A tibble: 36,321 x 9
+##    Protein Log2Intensity Run   Condition BioReplicate Intensity
+##    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+##  1 sp|D6V…          26.8 JD_0… Conditio…            1    1.18e8
+##  2 sp|D6V…          26.6 JD_0… Conditio…            1    1.02e8
+##  3 sp|D6V…          26.6 JD_0… Conditio…            1    1.01e8
+##  4 sp|D6V…          26.8 JD_0… Conditio…            2    1.20e8
+##  5 sp|D6V…          26.8 JD_0… Conditio…            2    1.16e8
+##  6 sp|D6V…          26.6 JD_0… Conditio…            2    1.02e8
+##  7 sp|D6V…          26.6 JD_0… Conditio…            3    1.04e8
+##  8 sp|D6V…          26.5 JD_0… Conditio…            3    9.47e7
+##  9 sp|D6V…          26.5 JD_0… Conditio…            3    9.69e7
+## 10 sp|D6V…          26.6 JD_0… Conditio…            4    1.02e8
+## 11 sp|D6V…          26.4 JD_0… Conditio…            4    8.77e7
+## 12 sp|D6V…          26.7 JD_0… Conditio…            4    1.06e8
+## 13 sp|O13…          24.7 JD_0… Conditio…            1    2.76e7
+## 14 sp|O13…          24.7 JD_0… Conditio…            1    2.68e7
+## 15 sp|O13…          24.7 JD_0… Conditio…            1    2.76e7
+## 16 sp|O13…          24.5 JD_0… Conditio…            2    2.41e7
+## 17 sp|O13…          24.7 JD_0… Conditio…            2    2.68e7
+## 18 sp|O13…          24.6 JD_0… Conditio…            2    2.51e7
+## 19 sp|O13…          24.4 JD_0… Conditio…            3    2.20e7
+## 20 sp|O13…          24.6 JD_0… Conditio…            3    2.59e7
+## # … with 3.63e+04 more rows, and 3 more variables: TechReplicate &lt;chr&gt;,
+## #   Log10Intensity &lt;dbl&gt;, Log10Intensity2 &lt;dbl&gt;</code></pre>
+<blockquote>
+<p>Challenge</p>
+<p>Load the <code>iprgna</code> data that is available in the <code>iprgna.rda</code> file, and repeat the creation of a new <code>Log10Intensisty</code> column.</p>
+<p><strong>Hint</strong>: this is a R Data object file (<code>rda</code> extension), that is loaded with the <code>load</code> function. It is not a <code>cvs</code> file!</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./data/iprgna.rda&quot;</span>)
+iprgna <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity))</code></pre></div>
+<pre><code>## # A tibble: 36,321 x 7
+##    Protein Run   Condition BioReplicate Intensity TechReplicate
+##    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        
+##  1 sp|D6V… JD_0… Conditio…            1   NA      B            
+##  2 sp|D6V… JD_0… Conditio…            1    1.02e8 C            
+##  3 sp|D6V… JD_0… Conditio…            1   NA      A            
+##  4 sp|D6V… JD_0… Conditio…            2    1.20e8 A            
+##  5 sp|D6V… JD_0… Conditio…            2   NA      B            
+##  6 sp|D6V… JD_0… Conditio…            2    1.02e8 C            
+##  7 sp|D6V… JD_0… Conditio…            3    1.04e8 A            
+##  8 sp|D6V… JD_0… Conditio…            3    9.47e7 B            
+##  9 sp|D6V… JD_0… Conditio…            3    9.69e7 C            
+## 10 sp|D6V… JD_0… Conditio…            4    1.02e8 B            
+## # … with 36,311 more rows, and 1 more variable: Log10Intensity &lt;dbl&gt;</code></pre>
+<p></details></p>
+<p>The first few rows of the output are full of <code>NA</code>s, so if we wanted to remove those we could insert a <code>filter()</code> in the chain:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprgna <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Intensity)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Log10Intensity =</span> <span class="kw">log10</span>(Intensity))</code></pre></div>
+<pre><code>## # A tibble: 35,318 x 7
+##    Protein Run   Condition BioReplicate Intensity TechReplicate
+##    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;            &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        
+##  1 sp|D6V… JD_0… Conditio…            1    1.02e8 C            
+##  2 sp|D6V… JD_0… Conditio…            2    1.20e8 A            
+##  3 sp|D6V… JD_0… Conditio…            2    1.02e8 C            
+##  4 sp|D6V… JD_0… Conditio…            3    1.04e8 A            
+##  5 sp|D6V… JD_0… Conditio…            3    9.47e7 B            
+##  6 sp|D6V… JD_0… Conditio…            3    9.69e7 C            
+##  7 sp|D6V… JD_0… Conditio…            4    1.02e8 B            
+##  8 sp|D6V… JD_0… Conditio…            4    8.77e7 C            
+##  9 sp|D6V… JD_0… Conditio…            4    1.06e8 A            
+## 10 sp|O13… JD_0… Conditio…            1    2.76e7 B            
+## # … with 35,308 more rows, and 1 more variable: Log10Intensity &lt;dbl&gt;</code></pre>
+<p><code>is.na()</code> is a function that determines whether something is an <code>NA</code>. The <code>!</code> symbol negates the result, so we’re asking for everything that <em>is not</em> an <code>NA</code>.</p>
+</div>
+<div id="split-apply-combine-data-analysis-and-the-summarize-function" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Split-apply-combine data analysis and the summarize() function</h3>
+<p>Many data analysis tasks can be approached using the <em>split-apply-combine</em> paradigm: split the data into groups, apply some analysis to each group, and then combine the results. <strong><code>dplyr</code></strong> makes this very easy through the use of the <code>group_by()</code> function.</p>
+<div id="the-summarize-function" class="section level4">
+<h4><span class="header-section-number">2.2.5.1</span> The <code>summarize()</code> function</h4>
+<p><code>group_by()</code> is often used together with <code>summarize()</code>, which collapses each group into a single-row summary of that group. <code>group_by()</code> takes as arguments the column names that contain the <strong>categorical</strong> variables for which you want to calculate the summary statistics. So to view the mean <code>weight</code> by sex:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprgna <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_Intensity =</span> <span class="kw">mean</span>(Intensity))</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition  mean_Intensity
+##   &lt;chr&gt;               &lt;dbl&gt;
+## 1 Condition1             NA
+## 2 Condition2             NA
+## 3 Condition3             NA
+## 4 Condition4             NA</code></pre>
+<p>Unfortunately, the <code>mean</code> of any vector that contains even a single missing value is <code>NA</code>. We need to remove missing values before calculating the mean, which is done easily with the <code>na.rm</code> argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprgna <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_Intensity =</span> <span class="kw">mean</span>(Intensity, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition  mean_Intensity
+##   &lt;chr&gt;               &lt;dbl&gt;
+## 1 Condition1      65144912.
+## 2 Condition2      64439756.
+## 3 Condition3      62475797.
+## 4 Condition4      63616488.</code></pre>
+<p>You can also group by multiple columns:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprgna <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(TechReplicate, BioReplicate) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_Intensity =</span> <span class="kw">mean</span>(Intensity, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+## # Groups:   TechReplicate [3]
+##    TechReplicate BioReplicate mean_Intensity
+##    &lt;chr&gt;                &lt;int&gt;          &lt;dbl&gt;
+##  1 A                        1      64891444.
+##  2 A                        2      63870255.
+##  3 A                        3      61648150.
+##  4 A                        4      63662564.
+##  5 B                        1      65563938.
+##  6 B                        2      65164270.
+##  7 B                        3      62758494.
+##  8 B                        4      64196979.
+##  9 C                        1      64978764.
+## 10 C                        2      64283727.
+## 11 C                        3      63020774.
+## 12 C                        4      62984686.</code></pre>
+</div>
+<div id="tallying" class="section level4">
+<h4><span class="header-section-number">2.2.5.2</span> Tallying</h4>
+<p>When working with data, it is also common to want to know the number of observations found for each factor or combination of factors. For this, <strong><code>dplyr</code></strong> provides <code>tally()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iprgna <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">  </span>tally</code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   Condition      n
+##   &lt;chr&gt;      &lt;int&gt;
+## 1 Condition1  9079
+## 2 Condition2  9081
+## 3 Condition3  9081
+## 4 Condition4  9080</code></pre>
+<p>Here, <code>tally()</code> is the action applied to the groups created by <code>group_by()</code> and counts the total number of records for each category.</p>
+<blockquote>
+<p>Challenge</p>
+<ol style="list-style-type: decimal">
+<li><p>How many proteins of each technical replicate are there?</p></li>
+<li><p>Use <code>group_by()</code> and <code>summarize()</code> to find the mean, min, and max intensity for each condition.</p></li>
+<li><p>What are the proteins with the highest intensity in each condition?</p></li>
+</ol>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Answer 1
+iprgna <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(TechReplicate) <span class="op">%&gt;%</span>
+<span class="st">    </span>tally</code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   TechReplicate     n
+##   &lt;chr&gt;         &lt;int&gt;
+## 1 A             12107
+## 2 B             12106
+## 3 C             12108</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Answer 2
+iprgna <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Intensity)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_int =</span> <span class="kw">mean</span>(Intensity),
+                  <span class="dt">min_int =</span> <span class="kw">min</span>(Intensity),
+                  <span class="dt">max_int =</span> <span class="kw">max</span>(Intensity))</code></pre></div>
+<pre><code>## # A tibble: 4 x 4
+##   Condition   mean_int min_int    max_int
+##   &lt;chr&gt;          &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+## 1 Condition1 65144912. 254608. 2841953257
+## 2 Condition2 64439756. 259513. 2757471311
+## 3 Condition3 62475797.  88409. 2659018724
+## 4 Condition4 63616488.  84850. 2881057105</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Answer 3
+iprgna <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Intensity)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Condition) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Intensity <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(Intensity)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(Intensity)</code></pre></div>
+<pre><code>## # A tibble: 4 x 6
+## # Groups:   Condition [4]
+##   Protein      Run           Condition BioReplicate Intensity TechReplicate
+##   &lt;chr&gt;        &lt;chr&gt;         &lt;chr&gt;            &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;        
+## 1 sp|P48589|R… JD_06232014_… Conditio…            3    2.66e9 B            
+## 2 sp|P48589|R… JD_06232014_… Conditio…            2    2.76e9 B            
+## 3 sp|P48589|R… JD_06232014_… Conditio…            1    2.84e9 A            
+## 4 sp|P48589|R… JD_06232014_… Conditio…            4    2.88e9 A</code></pre>
+<p></details></p>
+</div>
+</div>
+<div id="saving-and-exporting-data" class="section level3">
+<h3><span class="header-section-number">2.2.6</span> Saving and exporting data</h3>
+<p>We have seen how to lead a <code>csv</code> file with <code>read.csv</code> and <code>read_csv</code>. We can write a <code>csv</code> file with the <code>write.csv</code> and <code>write_csv</code> functions. The difference is that the latter never writes row names and is faster.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;iprg.csv&quot;</span>)</code></pre></div>
+<p>We have seen how to load data with the <code>load</code> function. We can serialise such R Data objects with <code>save</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;iprg.rda&quot;</span>)</code></pre></div>
+<p>Finally, we can save this whole session you worked so hard on, i.e save the complete environment (all variables at once) with <code>save.image</code>. Be careful though, as this can save a lot of unnecessary (temporary) data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&#39;02-rstats-all.rda&#39;</span>)</code></pre></div>
+<p><strong>Tip</strong>: The best way to save your work is to save the script that contains the exact command that lead to the results! Or better, we can save and document our full analysis in an R markdown file!</p>
+</div>
+</div>
+<div id="data-visualisation" class="section level2">
+<h2><span class="header-section-number">2.3</span> Data visualisation</h2>
+<div id="histogram" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Histogram</h3>
+<p>Make a histogram of all the MS1 intensities, quantified by Skyline, for <code>iPRG_example</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(iprg<span class="op">$</span>Intensity)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p>Our histogram looks quite skewed. How does this look on log-scale?</p>
+<p>Do you recognise this distribution? The distribution for log2-transformed intensities looks very similar to the normal distribution. The advantage of working with normally distributed data is that we can apply a variety of statistical tests to analyse and interpret our data. Let’s add a log2-scaled intensity column to our data so we don’t have to transform the original intensities every time we need them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(iprg<span class="op">$</span>Log2Intensity,
+     <span class="dt">xlab =</span> <span class="st">&quot;log2 transformed intensities&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Histogram of iPRG data&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p>In this case, we have duplicated information in our data, we have the raw and log-transformed data. This is not necessary (and not advised), as it is straightforward to transform the data on the flight.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">log2</span>(iprg<span class="op">$</span>Intensity),
+     <span class="dt">xlab =</span> <span class="st">&quot;log2 transformed intensities&quot;</span>,
+     <span class="dt">main =</span> <span class="st">&quot;Histogram of iPRG data&quot;</span>)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p>We look at the summary for the log2-transformed values including the value for the mean. Let’s fix that first.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iprg<span class="op">$</span>Log2Intensity)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   16.37   23.78   24.68   24.82   25.78   31.42</code></pre>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Reproduce the histogram above but plotting the data on the log base 10 scale, using the <code>log10</code> function. See also the more general <code>log</code> function.</p>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(<span class="kw">log10</span>(iprg<span class="op">$</span>Intensity))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-86-1.png" width="672" /> </details></p>
+</div>
+<div id="boxplot-or-box-and-whisker-plot" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Boxplot or box-and-whisker plot</h3>
+<p>Boxplots are extremely useful because they allow us to quickly visualise the data distribution, without making assumptions of the distribution type (non-parametric). We can read up on what statistics the different elements of a box-and-whisker represent in the R help files.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(iprg<span class="op">$</span>Log2Intensity)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p>The boxplot, however, shows us the intensities for all conditions and replicates. If we want to display the data for, we have multile possibilities.</p>
+<ul>
+<li>We can first split the data, using the <code>by</code> function</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">int_by_run &lt;-<span class="st"> </span><span class="kw">by</span>(iprg<span class="op">$</span>Log2Intensity, iprg<span class="op">$</span>Run, c)
+<span class="kw">boxplot</span>(int_by_run)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<ul>
+<li>We can use the formula syntax</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Run, <span class="dt">data =</span> iprg)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
+<ul>
+<li>We can use the <code>ggplot2</code> package that is very flexible to visualise data under different angles.</li>
+</ul>
+</div>
+<div id="the-ggplot2-package" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> The <code>ggplot2</code> package</h3>
+<p><code>ggplot2</code> is a plotting package that makes it simple to create complex plots from data in a data frame. It provides a more programmatic interface for specifying what variables to plot, how they are displayed, and general visual properties, so we only need minimal changes if the underlying data change or if we decide to change from a bar plot to a scatterplot. This helps in creating publication quality plots with minimal amounts of adjustments and tweaking.</p>
+<div id="comparison-between-base-graphics-and-ggplot2" class="section level4">
+<h4><span class="header-section-number">2.3.3.1</span> Comparison between base graphics and <code>ggplot2</code></h4>
+<p><strong>Base graphics</strong></p>
+<p>Uses a <em>canvas model</em> a series of instructions that sequentially fill the plotting canvas. While this model is very useful to build plots bits by bits bottom up, which is useful in some cases, it has some clear drawback:</p>
+<ul>
+<li>Layout choices have to be made without global overview over what may still be coming.</li>
+<li>Different functions for different plot types with different interfaces.</li>
+<li>No standard data input.</li>
+<li>Many routine tasks require a lot of boilerplate code.</li>
+<li>No concept of facets/lattices/viewports.</li>
+<li>Poor default colours.</li>
+</ul>
+<p><strong>The grammar of graphics</strong></p>
+<p>The components of <code>ggplot2</code>’s of graphics are</p>
+<ol style="list-style-type: decimal">
+<li>A <strong>tidy</strong> dataset</li>
+<li>A choice of geometric objects that servers as the visual representation of the data - for instance, points, lines, rectangles, contours.</li>
+<li>A description of how the variables in the data are mapped to visual properties (aesthetics) or the geometric objects, and an associated scale (e.g. linear, logarithmic, polar)</li>
+<li>A statistical summarisation rule</li>
+<li>A coordinate system.</li>
+<li>A facet specification, i.e. the use of several plots to look at the same data.</li>
+</ol>
+<p>Fist of all, we need to load the <code>ggplot2</code> package</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<p>ggplot graphics are built step by step by adding new elements.</p>
+<p>To build a ggplot we need to:</p>
+<ul>
+<li>bind the plot to a specific data frame using the <code>data</code> argument</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg)</code></pre></div>
+<ul>
+<li>define aesthetics (<code>aes</code>), by selecting the variables to be plotted and the variables to define the presentation such as plotting size, shape color, etc.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity))</code></pre></div>
+<ul>
+<li>add <code>geoms</code> – graphical representation of the data in the plot (points, lines, bars). To add a geom to the plot use <code>+</code> operator</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p>See the <a href="http://ggplot2.tidyverse.org/reference/">documentation page</a> to explore the many available <code>geoms</code>.</p>
+<p>The <code>+</code> in the <code>ggplot2</code> package is particularly useful because it allows you to modify existing <code>ggplot</code> objects. This means you can easily set up plot “templates” and conveniently explore different types of plots, so the above plot can also be generated with code like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Assign plot to a variable
+ints_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity))
+
+## Draw the plot
+ints_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p>Notes:</p>
+<ul>
+<li><p>Anything you put in the <code>ggplot()</code> function can be seen by any geom layers that you add (i.e., these are universal plot settings). This includes the x and y axis you set up in <code>aes()</code>.</p></li>
+<li><p>You can also specify aesthetics for a given geom independently of the aesthetics defined globally in the <code>ggplot()</code> function.</p></li>
+<li><p>The <code>+</code> sign used to add layers must be placed at the end of each line containing a layer. If, instead, the <code>+</code> sign is added in the line before the other layer, <code>ggplot2</code> will not add the new layer and will return an error message.</p></li>
+</ul>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ul>
+<li>Repeat the plot above but displaying the raw intensities.</li>
+<li>Log-10 transform the raw intensities on the flight when plotting.</li>
+</ul>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Intensity)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> <span class="kw">log10</span>(Intensity))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-95-2.png" width="672" /> </details></p>
+</div>
+</div>
+<div id="customising-plots" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> Customising plots</h3>
+<p>First, let’s colour the boxplot based on the condition:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg,
+       <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity,
+           <span class="dt">fill =</span> Condition)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p>Now let’s rename all axis labels and title, and rotate the x-axis labels 90 degrees. We can add those specifications using the <code>labs</code> and <code>theme</code> functions of the <code>ggplot2</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
+       <span class="dt">data =</span> iprg) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Log2 transformed intensity distribution per MS run&#39;</span>,
+         <span class="dt">y =</span> <span class="st">&#39;Log2(Intensity)&#39;</span>,
+         <span class="dt">x =</span> <span class="st">&#39;MS run&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<p>And easily switch from a boxplot to a violin plot representation by changing the <code>geom</code> type.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
+       <span class="dt">data =</span> iprg) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_violin</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Log2 transformed intensity distribution per Subject&#39;</span>,
+         <span class="dt">y =</span> <span class="st">&#39;Log2(Intensity)&#39;</span>,
+         <span class="dt">x =</span> <span class="st">&#39;MS run&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>))</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p>Finally, we can also overlay multiple geoms by simply <em>adding</em> them one after the other.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
+            <span class="dt">data =</span> iprg)
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() ## not very usefull</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<ul>
+<li>Overlay a boxplot goem on top of a jitter geom for the raw or log-10 transformed intensities.</li>
+<li>Customise the plot as suggested above.</li>
+</ul>
+</blockquote>
+<p><details></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Note how the log10 transformation is applied to both geoms
+<span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> <span class="kw">log10</span>(Intensity))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-100-1.png" width="672" /> </details></p>
+<p>Finally, a very useful feature of <code>ggplot2</code> is <strong>facetting</strong>, that defines how to subset the data into different <em>panels</em> (facets).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(iprg)</code></pre></div>
+<pre><code>## [1] &quot;Protein&quot;       &quot;Log2Intensity&quot; &quot;Run&quot;           &quot;Condition&quot;    
+## [5] &quot;BioReplicate&quot;  &quot;Intensity&quot;     &quot;TechReplicate&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg,
+       <span class="kw">aes</span>(<span class="dt">x =</span> TechReplicate, <span class="dt">y =</span> Log2Intensity,
+           <span class="dt">fill =</span> Condition)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span><span class="st"> </span>Condition)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+</div>
+<div id="saving-your-figures" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> Saving your figures</h3>
+<p>You can save plots to a number of different file formats. PDF is by far the most common format because it’s lightweight, cross-platform and scales up well but jpegs, pngs and a number of other file formats are also supported. Let’s redo the last barplot but save it to the file system this time.</p>
+<p>Let’s save the boxplot as pdf file.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pdf</span>()
+p <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()
+<span class="kw">dev.off</span>()</code></pre></div>
+<p>The default file name is <code>Rplots.pdf</code>. We can customise that file name specifying it by passing the file name, as a character, to the <code>pdf()</code> function.</p>
+<blockquote>
+<p><strong>Challenge</strong></p>
+<p>Save a figure of your choice to a pdf file. Read the manual for the <code>png</code> function and save that same image to a png file.</p>
+<p><strong>Tip</strong>: save your figures in a dedicated directory.</p>
+</blockquote>
+</div>
+<div id="saving-our-results" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> Saving our results</h3>
+<p>The <code>iprg</code> data frame, that was read from the <code>csv</code> file. This object can be easily regenerated using <code>read.csv</code>, and hence doesn’t necessarily to be saved explicity.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;./data/iprg.rda&quot;</span>)</code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="getting-started-with-r-and-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introductory-statistics-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["RIntro.pdf", "RIntro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

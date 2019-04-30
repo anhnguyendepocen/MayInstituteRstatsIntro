@@ -80,7 +80,7 @@ conditions, 3 technical replicates per condition. Using the
 `block.random` function in the `psych` package, we can achieve
 randomized block designs! `block.random` function makes random assignment of `n` subjects with an equal number in all of `N` conditions.
 
-```{r psych, message = FALSE, eval = FALSE}
+```{r psych, message = FALSE}
 library("psych") ## load the psych package
 
 msrun <- unique(iprg[, c('Condition','Run')])

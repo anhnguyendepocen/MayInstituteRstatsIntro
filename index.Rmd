@@ -41,10 +41,10 @@ link-citations: yes
 |     | 10:30 - 11:00am | Refreshments                                                                                       |
 |     | 11:00 - 12:30pm | Lecture: sample size, linear regression, categorical data (OV)                                     |
 |     | 12:30 - 13:30pm | Lunch break                                                                                        |
-|     | 13:30 - 3:00pm  | Hypothesis testing and categorical data (MC)                                                       |
+|     | 13:30 - 2:15pm  | Linear models and correlation (LG)                                                                 |
+|     | 2:15 - 3:00pm   | Introduction to [`MSnbase`](https://bioconductor.org/packages/release/bioc/html/MSnbase.html) (LG)        |
 |     | 3:00 - 3:30pm   | Refreshments                                                                                       |
-|     | 3:30 - 4:15pm   | Samples size calculation, linear models and correlation (MC)                                       |
-|     | 4:15 - 5:00pm   | Introduction to [`MSnbase`](https://bioconductor.org/packages/release/bioc/html/MSnbase.html) (LG)        |
+|     | 3:30 - 5:00pm   | Hypothesis testing and categorical data and samples size calculation (MC)                          |
 |     | 5:00 - 6:00pm   | Wrap-up                                                                                            |
 
 

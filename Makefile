@@ -1,12 +1,12 @@
 all:
 	make book
-	make pdf
+	make RIntro.pdf
 	make RIntro.zip
 
 book:
 	R -e 'bookdown::render_book("index.Rmd", output_dir="./docs")'
 
-pdf:
+RIntro.pdf: 
 	R -e 'bookdown::render_book("index.Rmd", output_dir="./pdf", output_format = bookdown::pdf_book())'
 	mv pdf/RIntro.pdf docs/.
 

@@ -6,7 +6,7 @@
   [RStudio](https://www.rstudio.com/), and how to work with them
 - Find help about R
 - Install new R packages
-- R variables, functions, vectors, data.frames
+- R variables, functions, vectors
 - Simple arithmetics and data manipulation
 - Learn about R markdown
 

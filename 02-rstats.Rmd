@@ -57,7 +57,7 @@ These object are the equivalent of a sheet in a spreadsheet file. They
 are composed on a set of columns, which are different vectors (or
 characters, numerics, factors, ...) as seen previously.
 
-There are actually some additional cont strains compared to a
+There are actually some additional constrains compared to a
 spreadsheet. Rather than being limitations, these constrains are an
 important feature that allow some standardisation and hence automatic
 computations.

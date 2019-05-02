@@ -430,7 +430,7 @@ unique(iprg[, c("Condition", "TechReplicate")])
 </details>
 
 It is often useful to start a preliminary analysis, or proceed with a
-more detailed data exploration using a smalle subset of the data.
+more detailed data exploration using a smaller subset of the data.
 
 > **Challenge**
 >
@@ -843,7 +843,8 @@ We have seen how to lead a `csv` file with `read.csv` and
 row names and is faster.
 
 ```{r, eval=FALSE}
-write(iprg, file = "iprg.csv")
+write.csv(iprg, file = "iprg.csv")
+write_csv(iprg, path = "iprg.csv")
 ```
 
 We have seen how to load data with the `load` function. We can

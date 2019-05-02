@@ -591,7 +591,7 @@ dfr</code></pre></div>
 ## 11 Condition4             C
 ## 12 Condition4             A</code></pre>
 <p></details></p>
-<p>It is often useful to start a preliminary analysis, or proceed with a more detailed data exploration using a smalle subset of the data.</p>
+<p>It is often useful to start a preliminary analysis, or proceed with a more detailed data exploration using a smaller subset of the data.</p>
 <blockquote>
 <p><strong>Challenge</strong></p>
 <p>Select subsets of rows from iPRG dataset. Let’s focus on</p>
@@ -1066,7 +1066,8 @@ iprgna <span class="op">%&gt;%</span>
 <div id="saving-and-exporting-data" class="section level3">
 <h3><span class="header-section-number">2.2.6</span> Saving and exporting data</h3>
 <p>We have seen how to lead a <code>csv</code> file with <code>read.csv</code> and <code>read_csv</code>. We can write a <code>csv</code> file with the <code>write.csv</code> and <code>write_csv</code> functions. The difference is that the latter never writes row names and is faster.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;iprg.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;iprg.csv&quot;</span>)
+<span class="kw">write_csv</span>(iprg, <span class="dt">path =</span> <span class="st">&quot;iprg.csv&quot;</span>)</code></pre></div>
 <p>We have seen how to load data with the <code>load</code> function. We can serialise such R Data objects with <code>save</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(iprg, <span class="dt">file =</span> <span class="st">&quot;iprg.rda&quot;</span>)</code></pre></div>
 <p>Finally, we can save this whole session you worked so hard on, i.e save the complete environment (all variables at once) with <code>save.image</code>. Be careful though, as this can save a lot of unnecessary (temporary) data.</p>

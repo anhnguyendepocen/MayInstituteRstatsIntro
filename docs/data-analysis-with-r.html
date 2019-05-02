@@ -1116,15 +1116,14 @@ iprgna <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">int_by_run &lt;-<span class="st"> </span><span class="kw">by</span>(iprg<span class="op">$</span>Log2Intensity, iprg<span class="op">$</span>Run, c)
 <span class="kw">boxplot</span>(int_by_run)</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
-<ul>
-<li>We can use the formula syntax</li>
-</ul>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-88-1.png" width="672" /> * We can use the formula syntax</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(Log2Intensity <span class="op">~</span><span class="st"> </span>Run, <span class="dt">data =</span> iprg)</code></pre></div>
 <p><img src="RIntro_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
-<ul>
-<li>We can use the <code>ggplot2</code> package that is very flexible to visualise data under different angles.</li>
-</ul>
+<p>or, using directly the <code>iprg2</code> wide format:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;./data/iprg2.rda&quot;</span>)
+<span class="kw">boxplot</span>(iprg2)</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
+<p>We can use the <code>ggplot2</code> package that is very flexible to visualise data under different angles.</p>
 </div>
 <div id="the-ggplot2-package" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> The <code>ggplot2</code> package</h3>
@@ -1168,7 +1167,7 @@ iprgna <span class="op">%&gt;%</span>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <p>See the <a href="http://ggplot2.tidyverse.org/reference/">documentation page</a> to explore the many available <code>geoms</code>.</p>
 <p>The <code>+</code> in the <code>ggplot2</code> package is particularly useful because it allows you to modify existing <code>ggplot</code> objects. This means you can easily set up plot “templates” and conveniently explore different types of plots, so the above plot can also be generated with code like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Assign plot to a variable
@@ -1191,9 +1190,14 @@ ints_plot <span class="op">+</span><span class="st"> </span><span class="kw">geo
 </blockquote>
 <p><details></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Intensity)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> <span class="kw">log10</span>(Intensity))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-95-2.png" width="672" /> </details></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-96-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## or
+<span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Intensity)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_log10</span>()</code></pre></div>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-96-3.png" width="672" /> </details></p>
 </div>
 </div>
 <div id="customising-plots" class="section level3">
@@ -1203,7 +1207,7 @@ ints_plot <span class="op">+</span><span class="st"> </span><span class="kw">geo
        <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity,
            <span class="dt">fill =</span> Condition)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 <p>Now let’s rename all axis labels and title, and rotate the x-axis labels 90 degrees. We can add those specifications using the <code>labs</code> and <code>theme</code> functions of the <code>ggplot2</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
        <span class="dt">data =</span> iprg) <span class="op">+</span>
@@ -1212,7 +1216,7 @@ ints_plot <span class="op">+</span><span class="st"> </span><span class="kw">geo
          <span class="dt">y =</span> <span class="st">&#39;Log2(Intensity)&#39;</span>,
          <span class="dt">x =</span> <span class="st">&#39;MS run&#39;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>))</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 <p>And easily switch from a boxplot to a violin plot representation by changing the <code>geom</code> type.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
        <span class="dt">data =</span> iprg) <span class="op">+</span>
@@ -1221,18 +1225,18 @@ ints_plot <span class="op">+</span><span class="st"> </span><span class="kw">geo
          <span class="dt">y =</span> <span class="st">&#39;Log2(Intensity)&#39;</span>,
          <span class="dt">x =</span> <span class="st">&#39;MS run&#39;</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>))</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <p>Finally, we can also overlay multiple geoms by simply <em>adding</em> them one after the other.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> Log2Intensity, <span class="dt">fill =</span> Condition),
             <span class="dt">data =</span> iprg)
 p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() ## not very usefull</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-100-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-100-3.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-100-4.png" width="672" /></p>
 <blockquote>
 <p><strong>Challenge</strong></p>
 <ul>
@@ -1245,7 +1249,7 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplo
 <span class="kw">ggplot</span>(<span class="dt">data =</span> iprg, <span class="kw">aes</span>(<span class="dt">x =</span> Run, <span class="dt">y =</span> <span class="kw">log10</span>(Intensity))) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-100-1.png" width="672" /> </details></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-101-1.png" width="672" /> </details></p>
 <p>Finally, a very useful feature of <code>ggplot2</code> is <strong>facetting</strong>, that defines how to subset the data into different <em>panels</em> (facets).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(iprg)</code></pre></div>
 <pre><code>## [1] &quot;Protein&quot;       &quot;Log2Intensity&quot; &quot;Run&quot;           &quot;Condition&quot;    
@@ -1255,7 +1259,7 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplo
            <span class="dt">fill =</span> Condition)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">facet_grid</span>(<span class="op">~</span><span class="st"> </span>Condition)</code></pre></div>
-<p><img src="RIntro_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p><img src="RIntro_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 </div>
 <div id="saving-your-figures" class="section level3">
 <h3><span class="header-section-number">2.3.5</span> Saving your figures</h3>

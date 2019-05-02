@@ -948,15 +948,21 @@ possibilities.
 int_by_run <- by(iprg$Log2Intensity, iprg$Run, c)
 boxplot(int_by_run)
 ```
-
 * We can use the formula syntax
 
 ```{r}
 boxplot(Log2Intensity ~ Run, data = iprg)
 ```
 
-* We can use the `ggplot2` package that is very flexible to visualise
-  data under different angles.
+or, using directly the `iprg2` wide format:
+
+```{r}
+load("./data/iprg2.rda")
+boxplot(iprg2)
+```
+
+We can use the `ggplot2` package that is very flexible to visualise
+data under different angles.
 
 
 ### The `ggplot2`  package
@@ -1079,6 +1085,10 @@ Notes:
 ```{r}
 ggplot(data = iprg, aes(x = Run, y = Intensity)) + geom_boxplot()
 ggplot(data = iprg, aes(x = Run, y = log10(Intensity))) + geom_boxplot()
+## or
+ggplot(data = iprg, aes(x = Run, y = Intensity)) +
+    geom_boxplot() +
+    scale_y_log10()
 ```
 </details>
 

@@ -908,7 +908,7 @@ to convert our iPRG data using the `spread` function from the `tidyr`
 package:
 
 
-```{r}
+```{r, warning = FALSE}
 library("tidyr")
 iprg2 <- spread(iprg[, 1:3], Run, Log2Intensity)
 rownames(iprg2) <- iprg2$Protein
@@ -948,7 +948,7 @@ cor(x2)
 ### A note on correlation and replication
 
 It is often assumed that high correlation is a halmark of good
-replication. Rather than focus on the correlation of the data, a
+replication. Rather than focusing on the correlation of the data, a
 better measurement would be to look a the log2 fold-changes, i.e. the
 distance between or repeated measurements. The ideal way to visualise
 this is on an MA-plot:

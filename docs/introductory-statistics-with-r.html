@@ -231,9 +231,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h4><span class="header-section-number">3.1.1.1</span> Random selection of samples from a larger set</h4>
 <p>Let’s assume that we have the population with a total of 10 subjects. Suppose we label them from 1 to 10 and randomly would like to select 3 subjects we can do this using the <code>sample</code> function. When we run <code>sample</code> another time, different subjects will be selected. Try this a couple times.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 7 3 6</code></pre>
+<pre><code>## [1]  7 10  8</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>
-<pre><code>## [1] 6 8 3</code></pre>
+<pre><code>## [1] 8 2 4</code></pre>
 <p>Now suppose we would like to select the same randomly selected samples every time, then we can use a random seed number.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">3728</span>)
 <span class="kw">sample</span>(<span class="dv">10</span>, <span class="dv">3</span>)</code></pre></div>

@@ -923,9 +923,13 @@ if (!file.exists("./data/iprg2.rda"))
 And lets focus on the 3 runs, i.e. 2 replicates from condition
 1 and 1 replicate from condition 4.
 
+
 ```{r}
 x <- iprg2[, c(1, 2, 10)]
 head(x)
+```
+
+```{r pairsplot}
 pairs(x)
 ```
 
